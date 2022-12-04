@@ -5,8 +5,11 @@
                 <v-col cols="12">
                     <v-card class="mt-16" style="background-color: rgb(255,222,89)">
                         <v-card-title>
-                            <h1 class="display-1 mx-auto">Login</h1>
+                            <h1 class="display-2 mx-auto">Se connecter</h1>
                         </v-card-title>
+                        <v-card-subtitle>
+                            <h3 style="text-align: center">Tu n'as pas encore de compte ? <a href="/register">S'incrire</a></h3>
+                        </v-card-subtitle>
                         <v-card-text>
                             <v-form ref="form" v-model="valid" lazy-validation>
                                 <v-text-field
