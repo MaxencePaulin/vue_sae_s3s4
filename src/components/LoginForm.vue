@@ -69,6 +69,10 @@ export default {
     }),
     methods: {
         login() {
+            if (this.identifiant === '' || this.password === '') {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
             Vue.axios.post("http://localhost:3000/users/login", {
                 login: this.identifiant,
                 password: this.password,
@@ -76,14 +80,18 @@ export default {
                 let data = response.data.data;
                 if (response.data.data.login) {
                     this.$session.start();
-                    this.$session.set("identifiant", data.login);
-                    this.$session.set("role", data.role.libelle_role);
+                    this.$session.set("id_user", data.id_user);
+                    this.$session.set("id_role", data.id_role);
                     window.location.href = "/";
                 } else {
                     alert("Identifiant ou mot de passe incorrect");
                 }
             }).catch((e) => {
                 console.log(e);
+                if(e.response.status === 405) {
+                    alert("Identifiant ou mot de passe incorrect");
+                    return;
+                }
                 alert("Connexion impossible");
             });
         },

@@ -7,6 +7,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueSession from 'vue-session'
 
+axios.defaults.withCredentials = true
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
 
