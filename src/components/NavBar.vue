@@ -1,11 +1,12 @@
 <template>
     <div>
-        <v-app-bar app color="rgb(255,222,89)" dark>
+<!--        <v-app-bar app color="rgb(255,222,89)" dark>-->
+        <v-app-bar app color="amber" dark>
             <v-app-bar-nav-icon
                 color="rgb(50,50,50)"
                 @click="drawer = true"
             ></v-app-bar-nav-icon>
-            <v-toolbar-title style="color: black">
+            <v-toolbar-title style="color: black;">
                 NO SLEEP FESTIVAL
             </v-toolbar-title>
             <v-spacer></v-spacer>
@@ -34,7 +35,7 @@
                         >
                     </v-list-item>
 
-                    <span v-if="connected === false">
+                    <span v-if="!authenticated">
                         <v-list-item href="/login">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account-key</v-icon>
@@ -54,8 +55,8 @@
                         </v-list-item>
 
                     </span>
-                    <span v-else-if="connected === true">
-                        <v-list-item>
+                    <span v-else-if="authenticated">
+                        <v-list-item href="/account">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account</v-icon>
                             </v-list-item-icon>
@@ -67,9 +68,9 @@
 
                 </v-list-item-group>
             </v-list>
-            <div v-if="connected === true" class="pa-2">
-                <v-btn block class="amber" @click="logout">
-                    Logout
+            <div v-if="authenticated" class="pa-2">
+                <v-btn block class="amber" @click="signOut">
+                    Se déconnecter
                     <v-icon right color="black">mdi-exit-to-app</v-icon>
                 </v-btn>
             </div>
@@ -78,7 +79,7 @@
 </template>
 
 <script>
-import Vue from "vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
     name: "NavBar",
@@ -88,22 +89,20 @@ export default {
         group: null,
     }),
     computed: {
-        connected() {
-            return !!this.$session.exists();
-        },
+        ...mapGetters({
+            authenticated: "auth/authenticated",
+            user: 'auth/user',
+        }),
     },
     methods: {
-        logout() {
-            Vue.axios.post("http://localhost:3000/users/logout").then(data => {
-                console.log(data);
-                if (data.data.success === 1) {
-                    this.$session.destroy();
-                    window.location.href = "/";
-                } else {
-                    alert("Une erreur est survenue lors de la déconnexion");
-                }
-            }).catch(e => {
-                console.log(e);
+        ...mapActions({
+            logout: "auth/signOut",
+        }),
+        signOut() {
+            this.logout().then(() => {
+                this.$router.replace({
+                    name: "home",
+                });
             });
         },
         // switchLanguage(lang) {

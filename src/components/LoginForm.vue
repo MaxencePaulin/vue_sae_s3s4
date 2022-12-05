@@ -8,7 +8,7 @@
                             <h1 class="display-2 mx-auto">Se connecter</h1>
                         </v-card-title>
                         <v-card-subtitle>
-                            <h3 style="text-align: center">Tu n'as pas encore de compte ? <a href="/register">S'incrire</a></h3>
+                            <h3 style="text-align: center">Tu n'as pas encore de compte ? <a href="/register">S'inscrire</a></h3>
                         </v-card-subtitle>
                         <v-card-text>
                             <v-form ref="form" v-model="valid" lazy-validation>
@@ -28,14 +28,10 @@
                                     @click:append="showPassword = !showPassword"
                                 ></v-text-field>
                             </v-form>
-
-                            <input type="checkbox" id="checkbox" @click="checkedChange" v-model="checked">
-                            <label for="checkbox"> Rester connecter ?</label>
                         </v-card-text>
                         <v-card-actions>
-
                             <v-spacer></v-spacer>
-                            <v-btn color="warning" @click="login">Login</v-btn>
+                            <v-btn color="warning" @click="login">Se connecter</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -45,7 +41,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import { mapActions } from 'vuex';
 export default {
     name: "LoginView",
     data: () => ({
@@ -68,39 +64,27 @@ export default {
         }
     }),
     methods: {
+        ...mapActions({
+            signIn: 'auth/signIn'
+        }),
         login() {
             if (this.identifiant === '' || this.password === '') {
                 alert('Veuillez remplir tous les champs');
                 return;
             }
-            Vue.axios.post("http://localhost:3000/users/login", {
+            this.signIn({
                 login: this.identifiant,
                 password: this.password,
-            }).then((response) => {
-                let data = response.data.data;
-                if (response.data.data.login) {
-                    this.$session.start();
-                    this.$session.set("id_user", data.id_user);
-                    this.$session.set("id_role", data.id_role);
-                    window.location.href = "/";
-                } else {
-                    alert("Identifiant ou mot de passe incorrect");
-                }
-            }).catch((e) => {
+            }).then(() => {
+                this.$router.replace({
+                    name: 'home'
+                }).catch(() => {
+
+                })
+            }).catch(e => {
+                console.log('Error login');
                 console.log(e);
-                if(e.response.status === 405) {
-                    alert("Identifiant ou mot de passe incorrect");
-                    return;
-                }
-                alert("Connexion impossible");
             });
-        },
-        checkedChange() {
-            if (this.checked === false) {
-                console.log("checked");
-            } else {
-                console.log("unchecked");
-            }
         }
     }
 }
