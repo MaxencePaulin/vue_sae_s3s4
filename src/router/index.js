@@ -8,6 +8,7 @@ import store from '@/store/index.js'
 import ErrorView from '../views/ErrorView.vue'
 import AccountView from '../views/AccountView'
 import UnauthorizedView from "@/views/UnauthorizedView.vue";
+import SearchArtist from "@/views/SearchArtist.vue";
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,15 @@ const routes = [
                 return next({ name: 'home' })
             }
             next()
+        }
+    },
+    {
+        path: "/searchArtist",
+        name: "searchArtist",
+        component: SearchArtist,
+        beforeEnter: async (to, from, next) => {
+            await store.dispatch('getAllArtists');
+            next();
         }
     },
     {

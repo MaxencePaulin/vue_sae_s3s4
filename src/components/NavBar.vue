@@ -29,9 +29,9 @@
                     <v-list-item-avatar>
                         <v-icon color="amber">mdi-vuejs</v-icon>
                     </v-list-item-avatar>
-                    <v-list-title style="color:rgb(255, 222, 89)">
+                    <span style="color:rgb(255, 222, 89)">
                         NO SLEEP FESTIVAL
-                    </v-list-title>
+                    </span>
 
                     <v-list-item @click="$router.push('/')">
                         <v-list-item-icon>

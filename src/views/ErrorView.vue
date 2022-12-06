@@ -16,7 +16,7 @@
                         >
                             La page que vous recherchez n'existe pas.
                         </v-alert>
-                        <v-btn color="amber" href="/">Retourner au menu principal</v-btn>
+                        <v-btn color="amber" @click="$router.push('/')">Retourner au menu principal</v-btn>
                     </v-card-text>
                 </v-card>
             </v-col>
