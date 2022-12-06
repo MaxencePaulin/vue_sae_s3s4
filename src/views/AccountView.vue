@@ -2,7 +2,7 @@
     <div :style="backgroundColor">
         <v-container>
             <v-row>
-                <v-col cols="12" sm="6" md="8" offset-md="2" offset-sm="3" style="margin-top: 50px">
+                <v-col cols="12" sm="10" md="8" offset-md="2" offset-sm="1" style="margin-top: 50px">
                     <v-card class="elevation-12" color="grey">
                         <v-toolbar color="amber" dark flat>
                             <v-toolbar-title style="color: black">Mon compte</v-toolbar-title>

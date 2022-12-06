@@ -215,7 +215,7 @@ export default {
                 genre: this.genre
             }).then((response) => {
                 if (response.data.success === 1) {
-                    window.location.href = "/login";
+                    this.$router.push({name: "login"})
                 } else {
                     alert("Identifiant ou email déjà utilisé");
                 }

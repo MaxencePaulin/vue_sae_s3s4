@@ -10,6 +10,7 @@
                 NO SLEEP FESTIVAL
             </v-toolbar-title>
             <v-spacer></v-spacer>
+            <span v-if="authenticated" style="color: black; margin: 20px">{{ user.login }}</span>
             <v-btn color="rgb(50,50,50)" @click="switchLanguage('fr')">
                 FR
             </v-btn>
@@ -25,7 +26,7 @@
                     v-model="group"
                     active-class="amber--text text--accent-4"
                 >
-                    <v-list-item href="/">
+                    <v-list-item @click="$router.push('/')">
                         <v-list-item-icon>
                             <v-icon color="amber">mdi-home</v-icon>
                         </v-list-item-icon>
@@ -36,7 +37,7 @@
                     </v-list-item>
 
                     <span v-if="!authenticated">
-                        <v-list-item href="/login">
+                        <v-list-item @click="$router.push('/login')">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account-key</v-icon>
                             </v-list-item-icon>
@@ -45,7 +46,7 @@
                             </v-list-item-title>
                         </v-list-item>
 
-                        <v-list-item href="/register">
+                        <v-list-item @click="$router.push('/register')">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account-plus</v-icon>
                             </v-list-item-icon>
@@ -56,7 +57,7 @@
 
                     </span>
                     <span v-else-if="authenticated">
-                        <v-list-item href="/account">
+                        <v-list-item @click="$router.push('/account')">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account</v-icon>
                             </v-list-item-icon>
@@ -64,8 +65,17 @@
                                 Mon compte
                             </v-list-item-title>
                         </v-list-item>
+                        <span v-if="(user.id_role === 3)">
+                            <v-list-item @click="$router.push('/admin')">
+                                <v-list-item-icon>
+                                    <v-icon color="amber">mdi-account-cog</v-icon>
+                                </v-list-item-icon>
+                                <v-list-item-title style="color: rgb(255, 222, 89)">
+                                    Administration
+                                </v-list-item-title>
+                            </v-list-item>
+                        </span>
                     </span>
-
                 </v-list-item-group>
             </v-list>
             <div v-if="authenticated" class="pa-2">
