@@ -101,7 +101,7 @@
                                         <v-text-field
                                             v-model="genre"
                                             :rules="genreRules"
-                                            label="Genre (homme ou femme)"
+                                            label="Genre (homme, femme ou autre)"
                                         ></v-text-field>
                                     </v-col>
                                     <v-col
@@ -188,7 +188,7 @@ export default {
         ],
         genreRules: [
             (v) => v.length <= 20 || "Le genre doit être inférieur à 20 caractères",
-            (v) => /^(homme|femme|male|female)$/.test(v.toLowerCase()) || "Le genre doit être homme ou femme (male ou female)"
+            (v) => /^(homme|femme|autre|male|female|other)$/.test(v.toLowerCase()) || "Le genre doit être homme, femme ou autre (male, female or other)"
         ],
         backgroundColor: {
             backgroundColor: "rgb(50, 50, 50)",
@@ -201,6 +201,10 @@ export default {
                 this.password === '' ||
                 this.password !== this.confirmPassword) {
                 alert("Champs incorrect ou les mots de passe ne correspondent pas");
+                return;
+            } if (this.genre !== '' && (this.genre.toLowerCase() !== "homme" && this.genre.toLowerCase() !== "femme"
+                        && this.genre.toLowerCase() !== "autre")) {
+                alert("Le genre doit être homme, femme ou autre");
                 return;
             }
             Vue.axios.post("http://localhost:3000/users/register", {
