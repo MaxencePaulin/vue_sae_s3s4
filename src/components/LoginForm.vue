@@ -2,7 +2,7 @@
     <div :style="backgroundColor">
         <v-container>
             <v-row>
-                <v-col cols="12">
+                <v-col cols="12" sm="10" md="8" offset-md="2" offset-sm="1" >
                     <v-card class="mt-16" style="background-color: rgb(255,222,89)">
                         <v-card-title>
                             <h1 class="display-2 mx-auto">Se connecter</h1>

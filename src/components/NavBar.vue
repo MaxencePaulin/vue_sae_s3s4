@@ -1,7 +1,7 @@
 <template>
     <div>
 <!--        <v-app-bar app color="rgb(255,222,89)" dark>-->
-        <v-app-bar app color="amber" dark>
+        <v-app-bar absolute app color="amber" dark hide-on-scroll scroll-target="#scrolling-techniques-4">
             <v-app-bar-nav-icon
                 color="rgb(50,50,50)"
                 @click="drawer = true"
@@ -26,6 +26,13 @@
                     v-model="group"
                     active-class="amber--text text--accent-4"
                 >
+                    <v-list-item-avatar>
+                        <v-icon color="amber">mdi-vuejs</v-icon>
+                    </v-list-item-avatar>
+                    <v-list-title style="color:rgb(255, 222, 89)">
+                        NO SLEEP FESTIVAL
+                    </v-list-title>
+
                     <v-list-item @click="$router.push('/')">
                         <v-list-item-icon>
                             <v-icon color="amber">mdi-home</v-icon>
