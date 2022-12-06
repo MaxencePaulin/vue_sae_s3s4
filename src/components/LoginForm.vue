@@ -8,7 +8,7 @@
                             <h1 class="display-2 mx-auto">Se connecter</h1>
                         </v-card-title>
                         <v-card-subtitle>
-                            <h3 style="text-align: center">Tu n'as pas encore de compte ? <a href="/register">S'inscrire</a></h3>
+                            <h3 style="text-align: center">Tu n'as pas encore de compte ? <a @click="$router.push('/register')" >S'inscrire</a></h3>
                         </v-card-subtitle>
                         <v-card-text>
                             <v-form ref="form" v-model="valid" lazy-validation>
@@ -61,7 +61,7 @@ export default {
         backgroundColor: {
             backgroundColor: "rgb(50, 50, 50)",
             height: "100vh"
-        }
+        },
     }),
     methods: {
         ...mapActions({
