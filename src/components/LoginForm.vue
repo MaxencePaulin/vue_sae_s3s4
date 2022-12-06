@@ -84,6 +84,10 @@ export default {
             }).catch(e => {
                 console.log('Error login');
                 console.log(e);
+                if (e.response && e.response.status === 405) {
+                    return alert('Identifiant ou mot de passe incorrect');
+                }
+                alert("Une erreur est survenue lors de la connexion, l'API n'est peut être pas allumée");
             });
         }
     }

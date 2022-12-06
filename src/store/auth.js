@@ -33,8 +33,6 @@ export default {
             await Vue.axios.post('http://localhost:3000/users/login', credentials)
                 .then((response) => {
                     return dispatch('attempt', response.data.data.token)
-                }).catch((e)=>{
-                    console.log(e)
                 })
         },
 
