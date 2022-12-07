@@ -9,6 +9,7 @@ import ErrorView from '../views/ErrorView.vue'
 import AccountView from '../views/AccountView'
 import UnauthorizedView from "@/views/UnauthorizedView.vue";
 import SearchArtist from "@/views/SearchArtist.vue";
+import ArtistView from "@/views/ArtistView.vue";
 
 Vue.use(VueRouter)
 
@@ -49,11 +50,30 @@ const routes = [
         }
     },
     {
-        path: "/searchArtist",
-        name: "searchArtist",
+        path: "/artist",
+        name: "artist",
         component: SearchArtist,
         beforeEnter: async (to, from, next) => {
-            await store.dispatch('getAllArtists');
+            await store.dispatch('getAllArtists').catch(() => {
+                return next({ name: '404' })
+            });
+            if (store.getters['allArtists'] === null) {
+                return next({ name: '404' });
+            }
+            next();
+        }
+    },
+    {
+        path: "/artist/:id",
+        name: "artistId",
+        component: ArtistView,
+        beforeEnter: async (to, from, next) => {
+            await store.dispatch('getArtist', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
+            if (store.getters['artist'] === null) {
+                return next({ name: '404' });
+            }
             next();
         }
     },

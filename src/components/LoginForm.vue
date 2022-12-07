@@ -17,6 +17,7 @@
                                     :rules="identifiantRules"
                                     label="Identifiant"
                                     required
+                                    @keyup.enter="login"
                                 ></v-text-field>
                                 <v-text-field
                                     v-model="password"
@@ -26,6 +27,7 @@
                                     label="Mot de passe"
                                     required
                                     @click:append="showPassword = !showPassword"
+                                    @keyup.enter="login"
                                 ></v-text-field>
                             </v-form>
                         </v-card-text>
@@ -68,8 +70,7 @@ export default {
             signIn: 'auth/signIn'
         }),
         login() {
-            if (this.identifiant === '' || this.password === '') {
-                alert('Veuillez remplir tous les champs');
+            if (!this.$refs.form.validate()) {
                 return;
             }
             this.signIn({

@@ -9,7 +9,8 @@
                         label="Rechercher"
                         single-line
                         hide-details
-                        @click:append="artists"
+                        @click:append="updatePage(0)"
+                        @input="updatePage(0)"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -40,7 +41,7 @@
         <h3 v-if="artists.length <=0" class="mt-12" style="text-align: center">Aucun résultat</h3>
         <v-container>
             <v-row>
-                <v-col cols="12" sm="6" md="10" offset-md="1" offset-sm="1" v-for="artist in artists" :key="artist.id_artist" :artists="artists" :currentPage="currentPage">
+                <v-col cols="12" sm="8" md="10" offset-md="1" offset-sm="2" v-for="artist in artists" :key="artist.id_artist" :artists="artists" :currentPage="currentPage">
                     <v-card>
                         <v-card-title>
                             <v-icon>mdi-account</v-icon>
@@ -104,7 +105,7 @@ export default {
     data: () => ({
         search: "",
         currentPage: 0,
-        perPage: 10,
+        perPage: 1,
 
     }),
     components: {
@@ -128,6 +129,9 @@ export default {
         updatePage(pageNumber) {
           this.currentPage = pageNumber;
         },
+        goToArtist(id) {
+            this.$router.push({ name: 'artistId', params: { id: id } })
+        }
     },
 }
 </script>
