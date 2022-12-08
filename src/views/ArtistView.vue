@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid>
+    <v-container fluid style="margin-top: 5vh; margin-bottom: 5vh">
         <v-card>
             <v-card-title>
                 <h1>{{ artist.name }}</h1>

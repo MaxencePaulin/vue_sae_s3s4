@@ -1,9 +1,8 @@
 <template>
-    <div :style="backgroundColor">
-        <v-container>
+        <v-container style="margin-bottom: 10vh; margin-top: 10vh">
             <v-row>
                 <v-col cols="12"  sm="10" md="8" offset-md="2" offset-sm="1" >
-                    <v-card class="mt-16" style="background-color: rgb(255,222,89)">
+                    <v-card style="background-color: rgb(255,222,89)">
                         <v-card-title>
                             <h1 class="display-2 mx-auto">Inscription</h1>
                         </v-card-title>
@@ -130,7 +129,6 @@
                 </v-col>
             </v-row>
         </v-container>
-    </div>
 </template>
 
 <script>
@@ -190,10 +188,6 @@ export default {
             (v) => v.length <= 20 || "Le genre doit être inférieur à 20 caractères",
             (v) => /^(homme|femme|autre|male|female|other)$/.test(v.toLowerCase()) || "Le genre doit être homme, femme ou autre (male, female or other)"
         ],
-        backgroundColor: {
-            backgroundColor: "rgb(50, 50, 50)",
-            height: "100vh"
-        }
     }),
     methods: {
         register() {

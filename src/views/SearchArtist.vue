@@ -2,10 +2,11 @@
     <div >
         <v-container>
             <v-row>
-                <v-col cols="12">
+                <v-col cols="12" sm="8" md="10" offset-md="1" offset-sm="2">
                     <v-text-field
                         v-model="search"
                         append-icon="mdi-magnify"
+                        color="rgb(255,222,89)"
                         label="Rechercher"
                         single-line
                         hide-details
@@ -38,7 +39,7 @@
 <!--            </v-row>-->
 <!--        </v-container>-->
 
-        <h3 v-if="artists.length <=0" class="mt-12" style="text-align: center">Aucun résultat</h3>
+        <h3 v-if="artists.length <=0" style="text-align: center; color: rgb(255,222,89)">Aucun résultat</h3>
         <v-container>
             <v-row>
                 <v-col cols="12" sm="8" md="10" offset-md="1" offset-sm="2" v-for="artist in artists" :key="artist.id_artist" :artists="artists" :currentPage="currentPage">
@@ -137,5 +138,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

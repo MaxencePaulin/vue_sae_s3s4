@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container fluid style="margin-bottom: 10vh; margin-top: 10vh">
         <v-row>
             <v-col cols="12" sm="6" md="8" offset-md="2" offset-sm="3">
                 <v-card class="elevation-12">

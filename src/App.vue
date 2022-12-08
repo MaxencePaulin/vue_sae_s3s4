@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <nav-bar />
-    <v-main>
+    <v-main class="background">
       <router-view/>
     </v-main>
     <footer-component />
@@ -23,3 +23,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+.background {
+    background: rgb(50,50,50);
+}
+</style>

@@ -12,7 +12,7 @@
             <v-spacer></v-spacer>
             <span v-if="authenticated" style="color: black; margin: 20px">{{ user.login }}</span>
             <v-btn color="rgb(50,50,50)" @click="switchLanguage('fr')">
-                FR
+                <span style="color: rgb(255, 222, 89)">FR</span>
             </v-btn>
         </v-app-bar>
         <v-navigation-drawer

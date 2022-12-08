@@ -1,9 +1,8 @@
 <template>
-    <div :style="backgroundColor">
-        <v-container>
+        <v-container fluid style="margin-top: 10vh; margin-bottom: 10vh">
             <v-row>
                 <v-col cols="12" sm="10" md="8" offset-md="2" offset-sm="1" >
-                    <v-card class="mt-16" style="background-color: rgb(255,222,89)">
+                    <v-card style="background-color: rgb(255,222,89)">
                         <v-card-title>
                             <h1 class="display-2 mx-auto">Se connecter</h1>
                         </v-card-title>
@@ -39,7 +38,6 @@
                 </v-col>
             </v-row>
         </v-container>
-    </div>
 </template>
 
 <script>
@@ -60,10 +58,6 @@ export default {
             (v) => !!v || "Le mot de passe est requis",
             (v) => v.length <= 20 || "Le mot de passe doit être inférieur à 20 caractères",
         ],
-        backgroundColor: {
-            backgroundColor: "rgb(50, 50, 50)",
-            height: "100vh"
-        },
     }),
     methods: {
         ...mapActions({
@@ -96,5 +90,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
