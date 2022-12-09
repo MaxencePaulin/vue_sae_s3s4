@@ -10,7 +10,7 @@
         >
             <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        <span class="pagination-info" style="color: rgb(255,222,89)">
+        <span class="pagination-info" :style="colorcss">
             {{ currentPage + 1 }} / {{ totalPages() }}
         </span>
         <v-btn
@@ -29,13 +29,16 @@
 <script>
 export default {
     name: "PaginationComponent",
-    props: ['artists','currentPage', 'perPage'],
+    props: ['data','currentPage', 'perPage', 'colorcss'],
     methods: {
         updatePage(pageNumber) {
             this.$emit('page-update', pageNumber);
         },
         totalPages() {
-            return Math.ceil(this.artists.length / this.perPage);
+            if (this.data) {
+                return Math.ceil(this.data.length / this.perPage);
+            }
+            return 0;
         },
     }
 }

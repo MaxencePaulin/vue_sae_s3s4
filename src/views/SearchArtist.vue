@@ -7,7 +7,7 @@
                         v-model="search"
                         append-icon="mdi-magnify"
                         color="rgb(255,222,89)"
-                        label="Rechercher"
+                        label="Rechercher un artiste"
                         single-line
                         hide-details
                         @click:append="updatePage(0)"
@@ -88,9 +88,10 @@
         </v-container>
 
         <PaginationComponent
-            :artists="artistFilter"
+            :data="artistFilter"
             :currentPage="currentPage"
             :perPage="perPage"
+            :colorcss="colorcss"
             @page-update="updatePage"
         />
 
@@ -107,13 +108,15 @@ export default {
         search: "",
         currentPage: 0,
         perPage: 1,
-
+        colorcss: {
+            color: "rgb(255,222,89)"
+        }
     }),
     components: {
         PaginationComponent
     },
     computed: {
-        ...mapState(['allArtists']),
+        ...mapState('artist',['allArtists']),
         artistFilter() {
             return this.allArtists.filter((artist) => {
                 return artist.name.toLowerCase().includes(this.search.toLowerCase())

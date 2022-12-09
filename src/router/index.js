@@ -10,6 +10,7 @@ import AccountView from '../views/AccountView'
 import UnauthorizedView from "@/views/UnauthorizedView.vue";
 import SearchArtist from "@/views/SearchArtist.vue";
 import ArtistView from "@/views/ArtistView.vue";
+import AddCommentView from "@/views/AddCommentView.vue";
 
 Vue.use(VueRouter)
 
@@ -54,10 +55,10 @@ const routes = [
         name: "artist",
         component: SearchArtist,
         beforeEnter: async (to, from, next) => {
-            await store.dispatch('getAllArtists').catch(() => {
+            await store.dispatch('artist/getAllArtists').catch(() => {
                 return next({ name: '404' })
             });
-            if (store.getters['allArtists'] === null) {
+            if (store.getters['artist/allArtists'] === null) {
                 return next({ name: '404' });
             }
             next();
@@ -68,12 +69,35 @@ const routes = [
         name: "artistId",
         component: ArtistView,
         beforeEnter: async (to, from, next) => {
-            await store.dispatch('getArtist', to.params.id).catch(() => {
+            await store.dispatch('artist/getArtist', to.params.id).catch(() => {
                 return next({ name: '404' })
             });
-            if (store.getters['artist'] === null) {
+            if (store.getters['artist/artist'] === null) {
                 return next({ name: '404' });
             }
+            await store.dispatch('artist/getGuestBookArtist', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
+            next();
+        }
+    },
+    {
+        path: "/commentArtist/:id",
+        name: "commentArtist",
+        component: AddCommentView,
+        beforeEnter: async (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({ name: 'login' })
+            }
+            await store.dispatch('artist/getArtist', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
+            if (store.getters['artist/artist'] === null) {
+                return next({ name: '404' });
+            }
+            await store.dispatch('artist/getGuestBookArtist', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
             next();
         }
     },
