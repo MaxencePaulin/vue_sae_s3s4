@@ -111,7 +111,7 @@ export default {
             this.currentPage = pageNumber;
         },
         goToComment() {
-            this.$router.push({name: 'commentArtist', params: {id: this.artist.id_artist}});
+            this.$router.push({name: 'commentArtist', params: {id: this.artist.id_artist}}).catch(() => {});
         },
         ...mapActions('artist', ['getArtist', 'deleteCommentArtist']),
         confirmDelete(idx) {
