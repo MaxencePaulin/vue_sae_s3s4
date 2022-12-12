@@ -3,16 +3,22 @@
         <v-container>
             <v-row>
                 <v-col cols="12" sm="8" md="10" offset-md="1" offset-sm="2">
-                    <v-text-field
-                        v-model="search"
-                        append-icon="mdi-magnify"
-                        color="rgb(255,222,89)"
-                        label="Rechercher un artiste"
-                        single-line
-                        hide-details
-                        @click:append="updatePage(0)"
-                        @input="updatePage(0)"
-                    ></v-text-field>
+                    <!-- faire une carte pour un v-text-field -->
+                    <v-card color="grey">
+                        <v-card-text>
+                            <v-text-field
+                                v-model="search"
+                                append-icon="mdi-magnify"
+                                color="rgb(255,222,89)"
+                                label="Rechercher un artiste"
+                                single-line
+                                hide-details
+                                @click:append="updatePage(0)"
+                                @input="updatePage(0)"
+                            ></v-text-field>
+                        </v-card-text>
+                    </v-card>
+
                 </v-col>
             </v-row>
         </v-container>
