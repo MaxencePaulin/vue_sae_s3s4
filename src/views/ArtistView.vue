@@ -114,10 +114,12 @@ export default {
             this.$router.push({name: 'commentArtist', params: {id: this.artist.id_artist}}).catch(() => {});
         },
         ...mapActions('artist', ['getArtist', 'deleteCommentArtist']),
-        async confirmDelete(idx) {
+        confirmDelete(idx) {
             if (confirm('Voulez-vous vraiment supprimer cet avis ?')) {
-                await this.deleteCommentArtist({id_avis: idx, id_artist: this.artist.id_artist});
-                this.$router.go('/artist/' + this.artist.id_artist);
+                this.deleteCommentArtist({id_avis: idx, id_artist: this.artist.id_artist})
+                    .then(() => {
+                        this.$router.go('/artist/' + this.artist.id_artist);
+                    });
             }
         },
     },
