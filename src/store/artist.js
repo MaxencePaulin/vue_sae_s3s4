@@ -48,14 +48,8 @@ export default {
                 })
         },
         async getGuestBookArtist ({ commit }, id) {
-            await Vue.axios.get('http://localhost:3000/guest_book/one?id_artist=' + id)
-                .then((response) => {
-                    commit('SET_GUEST_BOOK_ARTIST', response.data)
-                })
-                .catch((e) => {
-                    console.log("axios error guestbook/" + id);
-                    console.log(e);
-                })
+            let response = await Vue.axios.get('http://localhost:3000/guest_book/one?id_artist=' + id)
+            commit('SET_GUEST_BOOK_ARTIST', response.data);
         },
         async addCommentArtist ({ commit }, {id_artist, id_user, libelle_avis}) {
             await Vue.axios.post('http://localhost:3000/guest_book/', {
@@ -72,14 +66,12 @@ export default {
                 })
         },
         async deleteCommentArtist ({dispatch},{id_avis, id_artist}) {
-            await Vue.axios.delete('http://localhost:3000/guest_book/' + id_avis)
-                .then(() => {
-                    dispatch('getGuestBookArtist', id_artist)
-                })
-                .catch((e) => {
-                    console.log("axios error guestbook/" + id_avis);
-                    console.log(e);
-                })
+            let res = await Vue.axios.delete('http://localhost:3000/guest_book/' + id_avis)
+            if (res.status === 500) {
+                console.log("axios error guestbook/" + id_avis);
+                console.log(res.data.message);
+            }
+            await dispatch('getGuestBookArtist', id_artist)
         }
     },
 }

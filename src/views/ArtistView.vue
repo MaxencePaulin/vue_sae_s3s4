@@ -114,9 +114,9 @@ export default {
             this.$router.push({name: 'commentArtist', params: {id: this.artist.id_artist}}).catch(() => {});
         },
         ...mapActions('artist', ['getArtist', 'deleteCommentArtist']),
-        confirmDelete(idx) {
+        async confirmDelete(idx) {
             if (confirm('Voulez-vous vraiment supprimer cet avis ?')) {
-                this.deleteCommentArtist({id_avis: idx, id_artist: this.artist.id_artist});
+                await this.deleteCommentArtist({id_avis: idx, id_artist: this.artist.id_artist});
                 this.$router.go('/artist/' + this.artist.id_artist);
             }
         },
