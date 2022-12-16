@@ -73,7 +73,9 @@
 </template>
 
 <script>
-
+export default {
+  name: 'HomePageView',
+}
 
 </script>
 
@@ -93,7 +95,7 @@
 
 .img1 {
   position: relative;
-  background-image: url("./assets/image111.jpg");
+  background-image: url("@/assets/image111.jpg");
   background-size: 100%;
   width: 100vw;
   height: 47vw;
@@ -151,19 +153,19 @@
 }
 
 .img2 {
-  background-image: url("./assets/image5.jpg");
+  background-image: url("@/assets/image5.jpg");
   width: 33.3vw;
   height: 33vw;
 }
 
 .img3 {
-  background-image: url("./assets/image3.jpg");
+  background-image: url("@/assets/image3.jpg");
   width: 33.3vw;
   height: 33vw;
 }
 
 .img4 {
-  background-image: url("./assets/image4.jpg");
+  background-image: url("@/assets/image4.jpg");
   width: 33.3vw;
   height: 33vw;
 }
@@ -181,7 +183,7 @@
 }
 
 .img5 {
-  background-image: url("./assets/image6.jpg");
+  background-image: url("@/assets/image6.jpg");
   background-size: 100%;
   width: 53vw;
   height: 35vw;
@@ -259,7 +261,7 @@
   width: 100%;
 }
 .img6 {
-  background-image: url("./assets/.image10jpeg.jpeg");
+  background-image: url("@/assets/.image10jpeg.jpeg");
   background-size: 100%;
   width: 53vw;
   height: 35vw;
