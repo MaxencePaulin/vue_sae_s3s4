@@ -14,6 +14,8 @@ import AddCommentView from "@/views/AddCommentView.vue";
 import feedBackView from "@/views/FeedBackView.vue";
 import AddCommentFestView from "@/views/AddCommentFestView.vue";
 
+import PlanningView from '../views/PlanningView.vue';
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -80,6 +82,12 @@ const routes = [
             await store.dispatch('artist/getGuestBookArtist', to.params.id).catch(() => {
                 return next({ name: '404' })
             });
+            await store.dispatch('concert/getAllConcerts').catch(() => {
+                return next({ name: '404' })
+            });
+            if (store.getters['concert/allConcerts'] === null) {
+                return next({ name: '404' });
+            }
             next();
         }
     },
@@ -162,6 +170,11 @@ const routes = [
         path: "/unauthorized",
         name: "unauthorized",
         component: UnauthorizedView
+    },
+    {
+        path: "/planning",
+        name: "planning",
+        component: PlanningView
     },
     {
         path: '*',
