@@ -124,10 +124,10 @@ export default {
     computed: {
         ...mapState('artist',['allArtists']),
         artistFilter() {
-            return this.allArtists.filter((artist) => {
-                return artist.name.toLowerCase().includes(this.search.toLowerCase())
-            })
-        },
+              return this.allArtists.filter((artist) => {
+                  return artist.name.toLowerCase().includes(this.search.toLowerCase())
+              })
+          },
         artists() {
             return this.artistFilter.slice(
                 this.currentPage * this.perPage,
