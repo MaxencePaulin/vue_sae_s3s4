@@ -12,6 +12,8 @@ import SearchArtist from "@/views/SearchArtist.vue";
 import ArtistView from "@/views/ArtistView.vue";
 import AddCommentView from "@/views/AddCommentView.vue";
 
+import PlanningView from '../views/PlanningView.vue';
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -138,6 +140,11 @@ const routes = [
         path: "/unauthorized",
         name: "unauthorized",
         component: UnauthorizedView
+    },
+    {
+        path: "/planning",
+        name: "planning",
+        component: PlanningView
     },
     {
         path: '*',
