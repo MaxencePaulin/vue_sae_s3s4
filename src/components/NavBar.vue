@@ -53,6 +53,16 @@
                         >
                     </v-list-item>
 
+                    <v-list-item @click="$router.push('/feedback')">
+                        <v-list-item-icon>
+                            <v-icon color="amber">mdi-message-bulleted</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title style="color: rgb(255, 222, 89)"
+                        >Donnez votre avis
+                        </v-list-item-title
+                        >
+                    </v-list-item>
+
                     <span v-if="!authenticated">
                         <v-list-item @click="$router.push('/login')">
                             <v-list-item-icon>

@@ -13,7 +13,7 @@ export default {
         },
         artist (state) {
             return state.artist
-        }
+        },
     },
     mutations: {
         SET_ALL_ARTIST (state, allArtists) {
@@ -24,18 +24,13 @@ export default {
         },
         SET_GUEST_BOOK_ARTIST (state, guestBookArtist) {
             state.artist.guestBook = guestBookArtist
-        }
+        },
     },
     actions: {
         async getAllArtists ({ commit }) {
-            await Vue.axios.get('http://localhost:3000/artist/')
-                .then((response) => {
-                    commit('SET_ALL_ARTIST', response.data)
-                })
-                .catch((e) => {
-                    console.log("axios error artists/");
-                    console.log(e);
-                })
+            let response = await Vue.axios.get('http://localhost:3000/artist/');
+            console.log(response.data);
+            commit('SET_ALL_ARTIST', response.data);
         },
         async getArtist ({ commit }, id) {
             await Vue.axios.get('http://localhost:3000/artist/' + id)

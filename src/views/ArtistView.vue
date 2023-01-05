@@ -29,6 +29,19 @@
                                 <p>{{ artist.biography }}</p>
                             </v-card-text>
                         </v-card>
+                        <br>
+                        <h3 v-if="allConcerts.length <=0" style="text-align: center; color: rgb(255,222,89)">Aucun résultat</h3>
+                        <v-card>
+                           <v-card-title>
+                             <h2>Info Concert</h2>
+                           </v-card-title>
+                            <v-card-text v-for="concert in concert" :key="concert.id_artist">
+                               <p>Date concert : {{ concert.date_concert }}</p>
+                               <p>Scene : {{ concert.id_scene }}</p>
+                               <p>Lieu : {{ concert.scene.libelle_scene }}</p>
+                               <p>Lieu : {{ concert.scene.typescene.libelle_typescene }}</p>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                 </v-row>
             </v-card-text>
@@ -88,6 +101,7 @@ export default {
         },
     }),
     computed: {
+        ...mapGetters('concert',['allConcerts']),
         ...mapGetters('artist',['artist']),
         ...mapGetters('auth',['user']),
         guestBook () {
@@ -99,6 +113,9 @@ export default {
             }
             return [];
         },
+        concert (){
+          return this.allConcerts.filter(concert => concert.id_artist === this.artist.id_artist)
+        },
         currentUserId () {
             if (this.user) {
                 return this.user.id_user;
@@ -107,6 +124,9 @@ export default {
         }
     },
     methods: {
+        concertsFilter() {
+            return this.allConcerts.filter(concert => concert.artist.id_artist === this.artist.id_artist);
+        },
         updatePage(pageNumber) {
             this.currentPage = pageNumber;
         },
