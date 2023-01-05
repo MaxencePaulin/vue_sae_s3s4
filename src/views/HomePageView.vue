@@ -1,6 +1,37 @@
 <template>
-  <div class="theme">
+  <div class="theme" id="top">
+      <v-btn
+          class="md-5 mr-3 elevation-24"
+          dark
+          fab
+          button
+          right
+          color="dark"
+          fixed
+          bottom
+          active-class="false"
+          @click="$vuetify.goTo('#top', goToOptions)"
+          v-scroll="onScroll"
+          v-show="showGoToTop"
+      >
+            <v-icon color="amber">mdi-arrow-up</v-icon>
+        </v-btn>
     <div class="img1">
+        <v-row
+            align="center"
+            justify="space-around"
+        >
+            <v-btn
+                v-for="summary in summarys"
+                :key="summary"
+                class="mx-6 mt-12 black--text amber"
+                rounded
+                @click="goToLink(summary)"
+            >
+                {{ summary }}
+            </v-btn>
+        </v-row>
+
       <div class="text1">
         <p class="text-over1">NO SLEEP FESTIVAL </p>
         <p class="text-over1"> FRANCE 2023</p>
@@ -19,7 +50,7 @@
       <div class="img3"></div>
       <div class="img4"></div>
     </div>
-    <div class="fondGris">
+    <div class="fondGris" id="Festival information">
       <div class="flex">
         <div class="img5 basis-70">
           <p class="text-over5">FESTIVAL INFORMATION</p>
@@ -39,10 +70,10 @@
         </div>
       </div>
     </div>
-    <div class="fondBlanc">
+    <div class="fondBlanc" id="Interactive map">
         La carte
     </div>
-    <div class="fondOrange1">
+    <div class="fondOrange1" id="Event details">
       <div class="text4">
         EVENT DETAILS
       </div>
@@ -55,12 +86,12 @@
           </div>
         </div>
     </div>
-    <div class="fondGris1">
+    <div class="fondGris1" id="Contact us">
         <div class="flex">
           <div class="pad-2">
             <p class="text7 align-center">ADDRESS</p>
             <p class="text8 align-center">Le grand bourg 69000 Lyon</p>
-            <p class="text7 align-center">MAIL ADRESS</p>
+            <p class="text7 align-center">MAIL ADDRESS</p>
             <p class="text8 align-center">info@nosleep-festival.fr</p>
             <p class="text7 align-center">PHONE NUMBER</p>
             <p class="text8 align-center">01 22 57 48 94</p>
@@ -74,7 +105,34 @@
 
 <script>
 export default {
-  name: 'HomePageView',
+    name: 'HomePageView',
+    data: () => ({
+        summarys: [
+            'Festival information',
+            'Interactive map',
+            'Event details',
+            'Contact us',
+        ],
+        offsetTop: 0,
+        goToOptions: {
+            duration: 1000,
+            offset: 0,
+            easing: 'easeInOutCubic',
+        },
+    }),
+    computed: {
+        showGoToTop() {
+            return this.offsetTop > 200;
+        },
+    },
+    methods: {
+        goToLink(summary) {
+            window.location.href = `#${summary}`;
+        },
+        onScroll (event) {
+            this.offsetTop = event.target.scrollingElement.scrollTop;
+        }
+    }
 }
 
 </script>
@@ -118,7 +176,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-left: 10%;
-  margin-top: 22vw;
+  margin-top: 8vw;
   font-size: 3em;
   color: white;
 }
