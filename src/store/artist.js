@@ -28,42 +28,40 @@ export default {
     },
     actions: {
         async getAllArtists ({ commit }) {
-            await Vue.axios.get('http://localhost:3000/artist/')
-                .then((response) => {
-                    commit('SET_ALL_ARTIST', response.data)
-                })
-                .catch((e) => {
-                    console.log("axios error artists/");
-                    console.log(e);
-                })
+            let response = await Vue.axios.get('http://localhost:3000/artist/')
+            if (response.status === 500) {
+                console.log("axios error artist/");
+                console.log(response.data.message);
+            }
+            await commit('SET_ALL_ARTIST', response.data)
         },
         async getArtist ({ commit }, id) {
-            await Vue.axios.get('http://localhost:3000/artist/' + id)
-                .then((response) => {
-                    commit('SET_ARTIST', response.data)
-                })
-                .catch((e) => {
-                    console.log("axios error artist/" + id);
-                    console.log(e);
-                })
+            let response = await Vue.axios.get('http://localhost:3000/artist/' + id)
+            if (response.status === 500) {
+                console.log("axios error artist/" + id);
+                console.log(response.data.message);
+            }
+            await commit('SET_ARTIST', response.data)
         },
         async getGuestBookArtist ({ commit }, id) {
             let response = await Vue.axios.get('http://localhost:3000/guest_book/one?id_artist=' + id)
-            commit('SET_GUEST_BOOK_ARTIST', response.data);
+            if (response.status === 500) {
+                console.log("axios error guestbook/one?id_artist=" + id);
+                console.log(response.data.message);
+            }
+            await commit('SET_GUEST_BOOK_ARTIST', response.data);
         },
         async addCommentArtist ({ commit }, {id_artist, id_user, libelle_avis}) {
-            await Vue.axios.post('http://localhost:3000/guest_book/', {
+            let response = await Vue.axios.post('http://localhost:3000/guest_book/', {
                 id_artist: id_artist,
                 id_user: id_user,
                 libelle_avis: libelle_avis
             })
-                .then((response) => {
-                    commit('SET_GUEST_BOOK_ARTIST', response.data)
-                })
-                .catch((e) => {
-                    console.log("axios error guestbook/");
-                    console.log(e);
-                })
+            if (response.status === 500) {
+                console.log("axios error guestbook/");
+                console.log(response.data.message);
+            }
+            await commit('SET_GUEST_BOOK_ARTIST', response.data)
         },
         async deleteCommentArtist ({dispatch},{id_avis, id_artist}) {
             let res = await Vue.axios.delete('http://localhost:3000/guest_book/' + id_avis)
