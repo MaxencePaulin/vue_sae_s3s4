@@ -13,6 +13,8 @@ import ArtistView from "@/views/ArtistView.vue";
 import AddCommentView from "@/views/AddCommentView.vue";
 import feedBackView from "@/views/FeedBackView.vue";
 import AddCommentFestView from "@/views/AddCommentFestView.vue";
+import TicketView from "@/views/TicketView.vue";
+import BoughtTicketView from "@/views/BoughtTicketView.vue";
 
 import PlanningView from '../views/PlanningView.vue';
 
@@ -170,6 +172,40 @@ const routes = [
         path: "/planning",
         name: "planning",
         component: PlanningView
+    },
+    {
+        path: "/ticket",
+        name: "ticket",
+        component: TicketView,
+        beforeEnter: async (to, from, next) => {
+            let response = await store.dispatch('ticket/getAllTicket');
+            if (response === -1) {
+                return next({ name: '404' });
+            }
+            next();
+        }
+    },
+    {
+        path: "/ticket/:id",
+        name: "ticketId",
+        component: BoughtTicketView,
+        beforeEnter: async (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({ name: 'login' })
+            }
+            let response = await store.dispatch('ticket/getAllTicket');
+            if (response === -1) {
+                return next({ name: '404' });
+            }
+            response = await store.dispatch('ticket/getTicket', to.params.id);
+            if (response === -1) {
+                return next({ name: '404' });
+            }
+            if (!store.getters['ticket/currentTicket']) {
+                return next({ name: '404' });
+            }
+            next();
+        }
     },
     {
         path: "/unauthorized",

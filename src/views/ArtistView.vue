@@ -59,7 +59,7 @@
                             </v-card-title>
                             <v-card-text>
                                 <p>{{ comment.libelle_avis }}</p>
-                                <v-btn v-if="comment.id_user === currentUser.id_user || currentUser.id_role === 3" @click="confirmDelete(comment.id_avis)">
+                                <v-btn v-if="comment.id_user === currentUser?.id_user || currentUser?.id_role === 3" @click="confirmDelete(comment.id_avis)">
                                     <v-icon color="red">mdi-delete</v-icon>
                                 </v-btn>
                             </v-card-text>

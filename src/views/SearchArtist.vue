@@ -3,7 +3,6 @@
         <v-container>
             <v-row>
                 <v-col cols="12" sm="8" md="10" offset-md="1" offset-sm="2">
-                    <!-- faire une carte pour un v-text-field -->
                     <v-card color="grey">
                         <v-card-text>
                             <v-text-field
@@ -22,28 +21,6 @@
                 </v-col>
             </v-row>
         </v-container>
-<!--        <v-container>-->
-<!--            <v-row>-->
-<!--                <v-col cols="12" sm="6" md="4" v-for="artist in artistFilter" :key="artist.id_artist">-->
-<!--                    <v-card>-->
-<!--                        <v-card-title>-->
-<!--                            <div>-->
-<!--                                <v-img-->
-<!--                                    :src="artist.image"-->
-<!--                                    aspect-ratio="1"-->
-<!--                                    contain-->
-<!--                                ></v-img>-->
-<!--                                <h3 class="headline mb-0">{{ artist.name }}</h3>-->
-<!--                                <div>{{ artist.biography }}</div>-->
-<!--                            </div>-->
-<!--                        </v-card-title>-->
-<!--                        <v-card-actions>-->
-<!--                            <v-btn color="warning" text @click="goToArtist(artist.id_artist)">Voir l'artiste</v-btn>-->
-<!--                        </v-card-actions>-->
-<!--                    </v-card>-->
-<!--                </v-col>-->
-<!--            </v-row>-->
-<!--        </v-container>-->
 
         <h3 v-if="artists.length <=0" style="text-align: center; color: rgb(255,222,89)">Aucun résultat</h3>
         <v-container>
@@ -71,25 +48,6 @@
                         </v-card-text>
                     </v-card>
                 </v-col>
-<!--                <v-col cols="12">-->
-<!--                    <v-card>-->
-<!--                        <v-card-title>-->
-<!--                            <v-icon>mdi-account</v-icon>-->
-<!--                            <span class="headline">Artiste</span>-->
-<!--                        </v-card-title>-->
-<!--                        <v-card-text>-->
-<!--                            <v-list-item>-->
-<!--                                <v-list-item-avatar>-->
-<!--                                    <v-img src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg"></v-img>-->
-<!--                                </v-list-item-avatar>-->
-<!--                                <v-list-item-content>-->
-<!--                                    <v-list-item-title class="headline">John Leider</v-list-item-title>-->
-<!--                                    <v-list-item-subtitle>Lead Developer</v-list-item-subtitle>-->
-<!--                                </v-list-item-content>-->
-<!--                            </v-list-item>-->
-<!--                        </v-card-text>-->
-<!--                    </v-card>-->
-<!--                </v-col>-->
             </v-row>
         </v-container>
 

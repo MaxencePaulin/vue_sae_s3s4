@@ -33,7 +33,7 @@
                         NO SLEEP FESTIVAL
                     </span>
 
-                    <v-list-item @click="$router.push('/')">
+                    <v-list-item @click="$router.push('/').catch(() => {})">
                         <v-list-item-icon>
                             <v-icon color="amber">mdi-home</v-icon>
                         </v-list-item-icon>
@@ -43,7 +43,7 @@
                         >
                     </v-list-item>
 
-                    <v-list-item @click="$router.push('/artist')">
+                    <v-list-item @click="$router.push('/artist').catch(() => {})">
                         <v-list-item-icon>
                             <v-icon color="amber">mdi-account-music</v-icon>
                         </v-list-item-icon>
@@ -53,7 +53,27 @@
                         >
                     </v-list-item>
 
-                    <v-list-item @click="$router.push('/feedback')">
+                    <v-list-item @click="$router.push('/ticket').catch(() => {})">
+                        <v-list-item-icon>
+                            <v-icon color="amber">mdi-cart-arrow-right</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title style="color: rgb(255, 222, 89)"
+                        >Achetez vos billets
+                        </v-list-item-title
+                        >
+                    </v-list-item>
+
+                    <v-list-item @click="$router.push('/planning').catch(() => {})">
+                        <v-list-item-icon>
+                            <v-icon color="amber">mdi-calendar-range</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title style="color: rgb(255, 222, 89)"
+                        >Planning des concerts
+                        </v-list-item-title
+                        >
+                    </v-list-item>
+
+                    <v-list-item @click="$router.push('/feedback').catch(() => {})">
                         <v-list-item-icon>
                             <v-icon color="amber">mdi-message-bulleted</v-icon>
                         </v-list-item-icon>
@@ -64,7 +84,7 @@
                     </v-list-item>
 
                     <span v-if="!authenticated">
-                        <v-list-item @click="$router.push('/login')">
+                        <v-list-item @click="$router.push('/login').catch(() => {})">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account-key</v-icon>
                             </v-list-item-icon>
@@ -73,7 +93,7 @@
                             </v-list-item-title>
                         </v-list-item>
 
-                        <v-list-item @click="$router.push('/register')">
+                        <v-list-item @click="$router.push('/register').catch(() => {})">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account-plus</v-icon>
                             </v-list-item-icon>
@@ -84,7 +104,7 @@
 
                     </span>
                     <span v-else-if="authenticated">
-                        <v-list-item @click="$router.push('/account')">
+                        <v-list-item @click="$router.push('/account').catch(() => {})">
                             <v-list-item-icon>
                                 <v-icon color="amber">mdi-account</v-icon>
                             </v-list-item-icon>
@@ -93,7 +113,7 @@
                             </v-list-item-title>
                         </v-list-item>
                         <span v-if="(user.id_role === 3)">
-                            <v-list-item @click="$router.push('/admin')">
+                            <v-list-item @click="$router.push('/admin').catch(() => {})">
                                 <v-list-item-icon>
                                     <v-icon color="amber">mdi-account-cog</v-icon>
                                 </v-list-item-icon>
@@ -142,9 +162,11 @@ export default {
                 });
             });
         },
-        // switchLanguage(lang) {
-        //     this.$i18n.locale = lang;
-        // },
+        switchLanguage(lang) {
+            // à developper plus tard
+            console.log(lang);
+            // this.$i18n.locale = lang;
+        },
     },
 };
 </script>

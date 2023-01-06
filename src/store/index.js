@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
 import artist from './artist'
-import feedback from "./feedback";
+import feedback from "./feedback"
 import concert from './concert'
+import ticket from './ticket'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
         auth,
         artist,
         feedback,
-        concert
+        concert,
+        ticket
     }
 })
