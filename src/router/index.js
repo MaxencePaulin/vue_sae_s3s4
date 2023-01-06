@@ -9,7 +9,9 @@ import ErrorView from '../views/ErrorView.vue'
 import AccountView from '../views/AccountView'
 import UnauthorizedView from "@/views/UnauthorizedView.vue";
 import SearchArtist from "@/views/SearchArtist.vue";
+import SearchPrestataire from "@/views/SearchPrestataire";
 import ArtistView from "@/views/ArtistView.vue";
+import PrestataireView  from "@/views/PrestataireView.vue";
 import AddCommentView from "@/views/AddCommentView.vue";
 import feedBackView from "@/views/FeedBackView.vue";
 import AddCommentFestView from "@/views/AddCommentFestView.vue";
@@ -88,6 +90,35 @@ const routes = [
                 return next({ name: '404' })
             });
             if (store.getters['concert/allConcerts'] === null) {
+                return next({ name: '404' });
+            }
+            next();
+        }
+    },
+    {
+        path: "/prestataire",
+        name: "prestataire",
+        component: SearchPrestataire,
+        beforeEnter: async (to, from, next) => {
+            await store.dispatch('prestataire/getAllPrestataires').catch(() => {
+                return next({ name: '404' })
+            });
+            if (store.getters['prestataire/allPrestataires'] === null) {
+                return next({ name: '404' });
+            }
+            next();
+        }
+    },
+    {
+        path: "/prestataire/:id",
+        name: "prestataireId",
+        component: PrestataireView,
+        beforeEnter: async (to, from, next) => {
+            await store.dispatch('prestataire/getPrestataire', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
+            if (store.getters['prestataire/prestataire'] === null) {
+                console.log("prestataire null")
                 return next({ name: '404' });
             }
             next();

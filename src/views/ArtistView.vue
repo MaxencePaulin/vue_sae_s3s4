@@ -118,12 +118,12 @@ export default {
                 return this.user.id_user;
             }
             return null;
-        }
+        },
     },
     methods: {
-        concertsFilter() {
-            return this.allConcerts.filter(concert => concert.artist.id_artist === this.artist.id_artist);
-        },
+        // concertsFilter() {
+        //     return this.allConcerts.filter(concert => concert.artist.id_artist === this.artist.id_artist);
+        // },
         updatePage(pageNumber) {
             this.currentPage = pageNumber;
         },
