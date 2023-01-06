@@ -35,7 +35,7 @@
                            <v-card-title>
                              <h2>Info Concert</h2>
                            </v-card-title>
-                            <v-card-text v-for="concert in concert" :key="concert.id_artist">
+                            <v-card-text v-for="concert in concerts" :key="concert.id_artist">
                                <p>Date concert : {{ concert.date_concert }}</p>
                                <p>Scene : {{ concert.id_scene }}</p>
                                <p>Lieu : {{ concert.scene.libelle_scene }}</p>
@@ -110,20 +110,17 @@ export default {
             }
             return [];
         },
-        concert (){
+        concerts (){
           return this.allConcerts.filter(concert => concert.id_artist === this.artist.id_artist)
         },
         currentUser () {
             if (this.user) {
-                return this.user.id_user;
+                return this.user;
             }
             return null;
         },
     },
     methods: {
-        // concertsFilter() {
-        //     return this.allConcerts.filter(concert => concert.artist.id_artist === this.artist.id_artist);
-        // },
         updatePage(pageNumber) {
             this.currentPage = pageNumber;
         },

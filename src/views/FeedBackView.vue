@@ -53,7 +53,7 @@ export default {
         ...mapGetters('auth', ['user']),
         currentUser() {
             if (this.user) {
-                return this.user.id_user;
+                return this.user;
             }
             return null;
         }
