@@ -2,13 +2,13 @@
     <v-container>
         <v-card style="margin: 5vh; background-color:rgb(255,222,89)">
             <v-card-title>
-                <h2>Ajouter un avis sur {{ artist.name }}</h2>
+                <h2>Ajouter un avis sur le No Sleep Festival</h2>
             </v-card-title>
             <v-card-subtitle>
                 <h3>Connecté sur le compte : {{ user.login }}</h3>
             </v-card-subtitle>
             <v-card-text>
-                Si vous appuyer sur le bouton "Ajouter", votre avis sera ajouté à la liste des avis de l'artiste avec le nom : {{ user.firstname }}.
+                Si vous appuyer sur le bouton "Ajouter", votre avis sera ajouté à la liste des avis du festival avec le nom : {{ user.firstname }}.
             </v-card-text>
             <v-card-text>
                 <v-form ref="form" v-model="valid" lazy-validation>
@@ -30,9 +30,10 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import {mapActions, mapGetters} from "vuex";
+
 export default {
-    name: "AddCommentView",
+    name: "AddCommentFestView",
     data: () => ({
         valid: true,
         comment: '',
@@ -43,18 +44,16 @@ export default {
     }),
     computed: {
         ...mapGetters('auth', ['user']),
-        ...mapGetters('artist', ['artist']),
     },
     methods: {
-        ...mapActions('artist', ['addCommentArtist']),
+        ...mapActions('feedback', ['addGlobalFeedBack']),
         async addComment() {
             if (this.$refs.form.validate()) {
-                await this.addCommentArtist({
-                    id_artist: this.artist.id_artist,
+                await this.addGlobalFeedBack({
                     id_user: this.user.id_user,
                     libelle_avis: this.comment,
                 });
-                this.$router.push({ name: 'artistId', params: { id: this.artist.id_artist } });
+                this.$router.push({name: 'feedback'});
             }
         },
     },

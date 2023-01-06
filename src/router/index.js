@@ -13,6 +13,10 @@ import SearchPrestataire from "@/views/SearchPrestataire";
 import ArtistView from "@/views/ArtistView.vue";
 import PrestataireView  from "@/views/PrestataireView.vue";
 import AddCommentView from "@/views/AddCommentView.vue";
+import feedBackView from "@/views/FeedBackView.vue";
+import AddCommentFestView from "@/views/AddCommentFestView.vue";
+
+import PlanningView from '../views/PlanningView.vue';
 
 Vue.use(VueRouter)
 
@@ -139,12 +143,21 @@ const routes = [
         }
     },
     {
+        path: "/commentFest",
+        name: "commentFest",
+        component: AddCommentFestView,
+        beforeEnter: async (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({ name: 'login' })
+            }
+            next();
+        }
+    },
+    {
         path: "/admin",
         name: "admin",
         component: AdminView,
         beforeEnter: (to, from, next) => {
-            console.log(store.state)
-            console.log(store.getters["auth/user"])
             if (!store.getters['auth/authenticated']) {
                 return next({
                     name: 'login'
@@ -170,6 +183,24 @@ const routes = [
             }
             next()
         }
+    },
+    {
+        path: "/feedback",
+        name: "feedback",
+        component: feedBackView,
+        beforeEnter: async (to, from, next) => {
+            let response = await store.dispatch('feedback/getAllFeedBack');
+            if (response === -1) {
+                return next({ name: '404' });
+            }
+            await store.commit('feedback/SET_FEEDBACK_FEST');
+            next();
+        }
+    },
+    {
+        path: "/planning",
+        name: "planning",
+        component: PlanningView
     },
     {
         path: "/unauthorized",

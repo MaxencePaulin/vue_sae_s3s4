@@ -46,7 +46,6 @@
                 </v-row>
             </v-card-text>
         </v-card>
-        <!-- faire un bouton pour ajouter un avis -->
         <v-card style="margin: 5vh; background-color:rgb(255,222,89)">
             <v-card-title>
                 <h2>Avis</h2>
@@ -60,12 +59,10 @@
                             </v-card-title>
                             <v-card-text>
                                 <p>{{ comment.libelle_avis }}</p>
-                                <v-btn v-if="comment.user.id_user === currentUserId" @click="confirmDelete(comment.id_avis)">
+                                <v-btn v-if="comment.id_user === currentUser.id_user || currentUser.id_role === 3" @click="confirmDelete(comment.id_avis)">
                                     <v-icon color="red">mdi-delete</v-icon>
                                 </v-btn>
                             </v-card-text>
-                            <!-- faire un v bouton pour supprimé un avis -->
-
                         </v-card>
                     </v-col>
                 </v-row>
@@ -116,7 +113,7 @@ export default {
         concert (){
           return this.allConcerts.filter(concert => concert.id_artist === this.artist.id_artist)
         },
-        currentUserId () {
+        currentUser () {
             if (this.user) {
                 return this.user.id_user;
             }
