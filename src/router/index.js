@@ -167,14 +167,14 @@ const routes = [
         }
     },
     {
-        path: "/unauthorized",
-        name: "unauthorized",
-        component: UnauthorizedView
-    },
-    {
         path: "/planning",
         name: "planning",
         component: PlanningView
+    },
+    {
+        path: "/unauthorized",
+        name: "unauthorized",
+        component: UnauthorizedView
     },
     {
         path: '*',
