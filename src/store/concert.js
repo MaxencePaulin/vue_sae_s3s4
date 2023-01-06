@@ -20,7 +20,14 @@ export default {
     actions: {
         async getAllConcerts ({ commit }) {
             let response = await Vue.axios.get('http://localhost:3000/concert/')
-            console.log(response.data)
+            let timestamp =  response.data[0].date_concert;
+            let dateFormat = new Date(timestamp );
+            console.log("Date: "+ dateFormat.getDate()+
+                "/"+(dateFormat.getMonth()+1)+
+                "/"+dateFormat.getFullYear()+
+                " "+dateFormat.getHours()+
+                ":"+dateFormat.getMinutes()+
+                ":"+dateFormat.getSeconds());
             commit('SET_ALL_CONCERTS', response.data)
         }
     }

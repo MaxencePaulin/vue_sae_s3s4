@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import auth from './auth'
 import artist from './artist'
 import concert from './concert'
+import prestataire from './prestataire'
 
 Vue.use(Vuex)
 
@@ -19,5 +20,6 @@ export default new Vuex.Store({
         auth,
         artist,
         concert,
+        prestataire,
     }
 })

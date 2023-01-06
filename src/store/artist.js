@@ -28,8 +28,7 @@ export default {
     },
     actions: {
         async getAllArtists ({ commit }) {
-            let response = await Vue.axios.get('http://localhost:3000/artist/');
-            console.log(response.data);
+            let response = await Vue.axios.get('http://localhost:3000/artist/')
             commit('SET_ALL_ARTIST', response.data);
         },
         async getArtist ({ commit }, id) {

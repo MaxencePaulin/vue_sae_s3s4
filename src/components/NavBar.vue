@@ -53,6 +53,16 @@
                         >
                     </v-list-item>
 
+                    <v-list-item @click="$router.push('/prestataire')">
+                      <v-list-item-icon>
+                        <v-icon color="amber">mdi-account-music</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title style="color: rgb(255, 222, 89)"
+                      >Rechercher un Prestataire
+                      </v-list-item-title
+                      >
+                    </v-list-item>
+
                     <v-list-item @click="$router.push('/feedback')">
                         <v-list-item-icon>
                             <v-icon color="amber">mdi-message-bulleted</v-icon>
