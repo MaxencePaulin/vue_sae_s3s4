@@ -27,7 +27,7 @@
                     active-class="amber--text text--accent-4"
                 >
                     <v-list-item-avatar>
-                        <v-icon color="amber">mdi-vuejs</v-icon>
+                        <v-icon color="amber">mdi-music</v-icon>
                     </v-list-item-avatar>
                     <span style="color:rgb(255, 222, 89)">
                         NO SLEEP FESTIVAL
