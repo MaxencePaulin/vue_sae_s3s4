@@ -7,7 +7,7 @@
             <v-card-subtitle>
                 <h3>Connecté sur le compte : {{ user.login }}</h3>
             </v-card-subtitle>
-            <v-card style="margin: 5vh;" v-for="(date) in validDate" :key="date">
+            <v-card style="margin: 5vh;" v-for="(date, index) in validDate" :key="index">
                 <v-card-title>
                     <h2>{{ date.date_start_validity }} jusqu'au {{ date.date_end_validity }}</h2>
                 </v-card-title>
@@ -16,7 +16,7 @@
                 </v-card-subtitle>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="black" text @click="buyOneTicket(date)">Acheter</v-btn>
+                    <v-btn color="black" text @click="buyOneTicket(validDate[index])">Acheter</v-btn>
                 </v-card-actions>
             </v-card>
             <v-card-actions>
@@ -45,45 +45,45 @@ export default {
         },
         validDate() {
             switch (this.$route.params.id) {
-                case '2':
+                case 2:
                     return this.date_validity_ticket.filter(date => {
-                        let date_start_validity = new Date(date.date_start_validity);
-                        let date_end_validity = new Date(date.date_end_validity);
+                        let date_start_validity = new Date(date.date_start_validity.split('/').reverse().join('-'));
+                        let date_end_validity = new Date(date.date_end_validity.split('/').reverse().join('-'));
                         let diff = date_end_validity - date_start_validity;
-                        let days = diff / (1000 * 60 * 60 * 24);
-                        return days >= 2;
+                        let days = diff / (1000 * 60 * 60 * 24) + 1;
+                        return days === 2;
                     });
-                case '3':
+                case 3:
                     return this.date_validity_ticket.filter(date => {
-                        let date_start_validity = new Date(date.date_start_validity);
-                        let date_end_validity = new Date(date.date_end_validity);
+                        let date_start_validity = new Date(date.date_start_validity.split('/').reverse().join('-'));
+                        let date_end_validity = new Date(date.date_end_validity.split('/').reverse().join('-'));
                         let diff = date_end_validity - date_start_validity;
-                        let days = diff / (1000 * 60 * 60 * 24);
-                        return days >= 3;
+                        let days = diff / (1000 * 60 * 60 * 24) + 1;
+                        return days === 3;
                     });
-                case '4':
+                case 4:
                     return this.date_validity_ticket.filter(date => {
-                        let date_start_validity = new Date(date.date_start_validity);
-                        let date_end_validity = new Date(date.date_end_validity);
+                        let date_start_validity = new Date(date.date_start_validity.split('/').reverse().join('-'));
+                        let date_end_validity = new Date(date.date_end_validity.split('/').reverse().join('-'));
                         let diff = date_end_validity - date_start_validity;
-                        let days = diff / (1000 * 60 * 60 * 24);
-                        return days >= 4;
+                        let days = diff / (1000 * 60 * 60 * 24) + 1;
+                        return days === 4;
                     });
-                case '5':
+                case 5:
                     return this.date_validity_ticket.filter(date => {
-                        let date_start_validity = new Date(date.date_start_validity);
-                        let date_end_validity = new Date(date.date_end_validity);
+                        let date_start_validity = new Date(date.date_start_validity.split('/').reverse().join('-'));
+                        let date_end_validity = new Date(date.date_end_validity.split('/').reverse().join('-'));
                         let diff = date_end_validity - date_start_validity;
-                        let days = diff / (1000 * 60 * 60 * 24);
-                        return days >= 5;
+                        let days = diff / (1000 * 60 * 60 * 24) + 1;
+                        return days === 5;
                     });
                 default:
                     return this.date_validity_ticket.filter(date => {
-                        let date_start_validity = new Date(date.date_start_validity);
-                        let date_end_validity = new Date(date.date_end_validity);
+                        let date_start_validity = new Date(date.date_start_validity.split('/').reverse().join('-'));
+                        let date_end_validity = new Date(date.date_end_validity.split('/').reverse().join('-'));
                         let diff = date_end_validity - date_start_validity;
-                        let days = diff / (1000 * 60 * 60 * 24);
-                        return days >= 1;
+                        let days = diff / (1000 * 60 * 60 * 24) + 1;
+                        return days === 1;
                     });
             }
         }

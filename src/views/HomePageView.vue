@@ -82,7 +82,7 @@
             <p class="text5">REGISTRATION</p>
             <p class="text6">Registration begins 10 January,
               2022 at www.NoSleepFestival.fr
-              /registration</p>
+              /ticket</p>
           </div>
         </div>
     </div>

@@ -47,7 +47,6 @@ export default {
     },
     methods: {
         buyOneTicket(id) {
-            console.log(id);
             this.$router.push({ name: 'ticketId', params: { id: id } }).catch(() => {});
         },
     },

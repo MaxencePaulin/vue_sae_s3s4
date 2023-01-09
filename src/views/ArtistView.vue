@@ -73,14 +73,6 @@
                 <v-btn  color="black" text @click="goToComment">Ajouter un avis</v-btn>
             </v-card-actions>
         </v-card>
-<!--        <v-card style="margin: 5vh" v-for="comment in artist.guestBook" :key="comment.id_avis">-->
-<!--            <v-card-title>-->
-<!--                <h2>{{ comment.user.firstname}}</h2>-->
-<!--            </v-card-title>-->
-<!--            <v-card-text>-->
-<!--                <p>{{ comment.libelle_avis }}</p>-->
-<!--            </v-card-text>-->
-<!--        </v-card>-->
     </v-container>
 </template>
 

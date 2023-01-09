@@ -15,6 +15,10 @@ export default {
 
         user (state) {
             return state.user
+        },
+
+        userTicket (state) {
+            return state.user.ticket
         }
     },
 
@@ -26,6 +30,10 @@ export default {
         SET_USER (state, data) {
             state.user = data
         },
+
+        SET_TICKET (state, data) {
+            state.user.ticket = data
+        }
     },
 
     actions: {
@@ -66,6 +74,14 @@ export default {
                     console.log("axiox error users/logout");
                     console.log(e);
                 });
+        },
+
+        async getTicket({ commit }, id) {
+            let response = await Vue.axios.get('http://localhost:3000/bought/user/' + id);
+            if (response.status === 500) {
+                return -1;
+            }
+            await commit('SET_TICKET', response.data);
         }
     },
 }

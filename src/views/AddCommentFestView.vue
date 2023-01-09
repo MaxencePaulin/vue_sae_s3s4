@@ -8,7 +8,7 @@
                 <h3>Connecté sur le compte : {{ user.login }}</h3>
             </v-card-subtitle>
             <v-card-text>
-                Si vous appuyer sur le bouton "Ajouter", votre avis sera ajouté à la liste des avis du festival avec le nom : {{ user.firstname }}.
+                Si vous appuyez sur le bouton "Ajouter", votre avis sera ajouté à la liste des avis du festival avec le nom : {{ user.firstname }}.
             </v-card-text>
             <v-card-text>
                 <v-form ref="form" v-model="valid" lazy-validation>
