@@ -15,6 +15,7 @@ export default {
         },
         SET_FEEDBACK_FEST (state) {
             state.feedBackFest = state.allFeedBack.filter(feedBack => feedBack.id_artist === null && feedBack.id_prestataire === null)
+            state.feedBackFest = state.allFeedBack.filter(feedBack => feedBack.id_prestataire === null && true)
         }
     },
     actions: {

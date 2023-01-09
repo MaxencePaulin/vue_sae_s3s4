@@ -3,6 +3,7 @@
         <v-card style="margin: 5vh; background-color:rgb(255,222,89)">
             <v-card-title>
                 <h2>Ajouter un avis sur {{ artist.name }}</h2>
+                <h2>Ajouter un avis sur {{ prestataire.name }}</h2>
             </v-card-title>
             <v-card-subtitle>
                 <h3>Connecté sur le compte : {{ user.login }}</h3>
@@ -44,9 +45,11 @@ export default {
     computed: {
         ...mapGetters('auth', ['user']),
         ...mapGetters('artist', ['artist']),
+        ...mapGetters('prestataire', ['prestataire']),
     },
     methods: {
         ...mapActions('artist', ['addCommentArtist']),
+        ...mapActions('prestataire', ['addCommentPrestataire']),
         async addComment() {
             if (this.$refs.form.validate()) {
                 await this.addCommentArtist({
@@ -57,6 +60,16 @@ export default {
                 this.$router.push({ name: 'artistId', params: { id: this.artist.id_artist } });
             }
         },
+      async addCommentPrest() {
+        if (this.$refs.form.validate()) {
+          await this.addCommentPrestataire({
+            id_prestataire: this.prestataire.id_prestataire,
+            id_user: this.user.id_user,
+            libelle_avis: this.comment,
+          });
+          this.$router.push({ name: 'artistId', params: { id: this.prestataire.id_prestataire } });
+        }
+      },
     },
 }
 </script>

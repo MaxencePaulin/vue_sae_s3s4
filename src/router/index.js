@@ -118,9 +118,11 @@ const routes = [
                 return next({ name: '404' })
             });
             if (store.getters['prestataire/prestataire'] === null) {
-                console.log("prestataire null")
                 return next({ name: '404' });
             }
+            await store.dispatch('prestataire/getGuestBookPrestataire', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
             next();
         }
     },
@@ -139,6 +141,26 @@ const routes = [
                 return next({ name: '404' });
             }
             await store.dispatch('artist/getGuestBookArtist', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
+            next();
+        }
+    },
+    {
+        path: "/commentPrestataire/:id",
+        name: "commentPrestataire",
+        component: AddCommentView,
+        beforeEnter: async (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({ name: 'login' })
+            }
+            await store.dispatch('prestataire/getPrestataire', to.params.id).catch(() => {
+                return next({ name: '404' })
+            });
+            if (store.getters['prestataire/prestataire/artist'] === null) {
+                return next({ name: '404' });
+            }
+            await store.dispatch('prestataire/getGuestBookPrestataire', to.params.id).catch(() => {
                 return next({ name: '404' })
             });
             next();
