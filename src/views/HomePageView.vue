@@ -1,5 +1,5 @@
 <template>
-  <div class="theme" id="top">
+  <div class="theme police" id="top">
       <v-btn
           class="md-5 mr-3 elevation-24"
           dark
@@ -32,7 +32,7 @@
             </v-btn>
         </v-row>
       <div class="text1">
-        <p class="text-over1">NO SLEEP FESTIVAL</p>
+        <p class="text-over1 police">NO SLEEP FESTIVAL</p>
         <p class="text-over1"> FRANCE 2023</p>
         <p class="text-over2">22.07.23 - 26.07.23 LYON, LE GRAND BOURG</p>
       </div>
@@ -62,10 +62,9 @@
           <p class="text2">POUR VOTRE PLAISIR</p>
           <p class="text3">Un fast-food et un camping
               à votre disposition pour une
-              expérience à 100%.</p>
+              expérience à 100%</p>
           <p class="text2">MAGASIN SOUVENIR</p>
-          <p class="text3">Gardez vos souvenirs physiques
-              avec des accessoires et des vêtements</p>
+          <p class="text3">Gardez vos souvenirs grâce à nos boutiques d'accessoires et de vêtements</p>
         </div>
       </div>
     </div>
@@ -79,8 +78,8 @@
         <div>
           <div class="encadre">
             <p class="text5">INSCRIPTION</p>
-            <p class="text6">Les inscriptions commencent le 10 janvier,
-                2022 à l'adresse www.NoSleepFestival.fr/ticket</p>
+            <p class="text6">Les inscriptions commencent le 10 janvier
+                2023 à l'adresse www.NoSleepFestival.fr/ticket</p>
           </div>
         </div>
     </div>
@@ -187,7 +186,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-left: 10%;
-  margin-top: 8vw;
+  margin-top: 15vw;
   font-size: 3em;
   color: white;
 }
@@ -217,7 +216,7 @@ export default {
   color: #373436;
   font-size: 28px;
   padding-top: 7.5vw;
-  padding-right: 20vw;
+  padding-right: 15vw;
   float: right;
 }
 
@@ -389,6 +388,9 @@ export default {
 .fondBlanc {
   background-color: #373436;
   height: 100%;
+}
+.police {
+    font-family: 'Garamond', serif;
 }
 
 </style>

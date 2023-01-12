@@ -1,5 +1,5 @@
 <template>
-    <v-footer padless color="amber">
+    <v-footer padless color="amber" class="police">
         <v-col class="text-center" cols="12">
             <v-btn
                 v-for="icon in icons"
@@ -28,4 +28,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.police {
+    font-family: 'Garamond', serif;
+}
+</style>

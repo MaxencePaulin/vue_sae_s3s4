@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="police">
     <nav-bar />
     <v-main class="background">
       <router-view/>
@@ -27,5 +27,8 @@ export default {
 <style>
 .background {
     background: rgb(50,50,50);
+}
+.police {
+    font-family: 'Garamond', serif;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
 <!--        <v-app-bar app color="rgb(255,222,89)" dark>-->
-        <v-app-bar absolute app color="amber" dark hide-on-scroll scroll-target="#scrolling-techniques-4">
+        <v-app-bar absolute app color="amber" dark hide-on-scroll scroll-target="#scrolling-techniques-4" class="police">
             <v-app-bar-nav-icon
                 color="rgb(50,50,50)"
                 @click="drawer = true"
@@ -181,3 +181,9 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.police {
+    font-family: 'Garamond', serif;
+}
+</style>
