@@ -365,12 +365,17 @@ export default {
 }
 
 .map__image {
+    margin-top: 5vh;
+    margin-left: 2vw;
     width: 50%;
     float: left;
 }
 
 .map__image svg {
-    width: 100%
+    width: 88%;
+    height : 80%;
+    margin-left: 3vw;
+    margin-bottom: 1vh;
 }
 
 .map__image path {
@@ -382,17 +387,8 @@ export default {
     opacity: 1;
 }
 
-.map__list a:hover {
-    font-size: 120%;
-}
-
 .fondBlanc {
-  background-color: #FFC300;
-  border-bottom: 20px solid #373436;
+  background-color: #373436;
 }
 
-svg  {
-  height: 100%;
-  margin-left: 2vw;
-}
 </style>

@@ -1,8 +1,8 @@
 <template>
 
     <div class="map" id="map">
-        <div class="map__image">
-            <p style="margin-left: 5vw; text-align: center; font-size: 200%;">MAP INTERACTIVE</p>
+        <div class="map__image" style="background-color: #FFC300; ">
+            <p style="text-align: center; font-size: 200%;">MAP INTERACTIVE</p>
 
             <svg
                 width="297mm"
