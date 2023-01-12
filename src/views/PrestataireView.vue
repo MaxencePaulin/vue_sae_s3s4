@@ -5,6 +5,8 @@
         <h1>{{ prestataire.libelle_prestataire }}</h1>
       </v-card-title>
       <v-card-text>
+        <v-row>
+          <v-col cols="12" sm="6" md="6">
             <v-card>
               <v-card-title>
                 <h2>Nom  :</h2>
@@ -19,6 +21,20 @@
                 <p>{{ prestataire.typeprestataire.libelle_typeprestataire }}</p>
               </v-card-text>
             </v-card>
+          </v-col>
+          <v-col cols="12" sm="6" md="6">
+            <v-card>
+              <v-card-title>
+                <h2>Service :</h2>
+              </v-card-title>
+              <v-card-text v-for="service in service" :key="service.id_prestataire">
+                <li>{{ service.service.libelle_service }}<v-btn  color="black" text @click="confirmDeleteService(service.id_service)">Supprimer service</v-btn></li>
+              </v-card-text>
+              <v-spacer></v-spacer>
+              <v-btn  color="black" text @click="goToService">Ajouter service</v-btn>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-card-text>
     </v-card>
     <v-card style="margin: 5vh; background-color:rgb(255,222,89)">
@@ -67,7 +83,7 @@ export default {
   }),
   computed: {
     ...mapGetters('prestataire',['prestataire']),
-    ...mapGetters('artist',['artist']),
+    ...mapGetters('prestataire',['allServices']),
     ...mapGetters('auth',['user']),
     guestBook () {
       if (this.prestataire.guestBook) {
@@ -84,15 +100,21 @@ export default {
       }
       return null;
     },
+    service (){
+      return this.allServices.filter(service => service.id_prestataire === this.prestataire.id_prestataire)
+    },
   },
   methods: {
+    ...mapActions('prestataire', ['getPrestataire', 'deleteCommentPrestataire','deleteServicePrestataire']),
     updatePage(pageNumber) {
       this.currentPage = pageNumber;
     },
     goToComment() {
       this.$router.push({name: 'commentPrestataire', params: {id: this.prestataire.id_prestataire}}).catch(() => {});
     },
-    ...mapActions('prestataire', ['getPrestataire', 'deleteCommentPrestataire']),
+    goToService() {
+      this.$router.push({name: 'addService'}).catch(() => {});
+    },
     confirmDelete(idx) {
       if (confirm('Voulez-vous vraiment supprimer cet avis ?')) {
         this.deleteCommentPrestataire({id_avis: idx, id_prestataire: this.prestataire.id_prestataire})
@@ -101,6 +123,14 @@ export default {
             });
       }
     },
+    confirmDeleteService(id_service) {
+      if (confirm('Voulez-vous vraiment supprimer ce service ?')) {
+        this.deleteServicePrestataire({id_prestataire: this.prestataire.id_prestataire, id_service: id_service})
+            .then(() => {
+              this.$router.go('/prestataire/' + this.prestataire.id_prestataire);
+            });
+      }
+    }
   },
 }
 </script>

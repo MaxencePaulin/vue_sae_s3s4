@@ -48,27 +48,16 @@ export default {
     },
     methods: {
         ...mapActions('artist', ['addCommentArtist']),
-        ...mapActions('prestataire', ['addCommentPrestataire']),
         async addComment() {
             if (this.$refs.form.validate()) {
                 await this.addCommentArtist({
-                    id_artist: this.artist.id_artist,
                     id_user: this.user.id_user,
+                    id_artist: this.artist.id_artist,
                     libelle_avis: this.comment,
                 });
-                this.$router.push({ name: 'artistId', params: { id: this.artist.id_artist } });
+              this.$router.push({name: 'artistId', params: {id: this.artist.id_artist}});
             }
         },
-      async addCommentPrest() {
-        if (this.$refs.form.validate()) {
-          await this.addCommentPrestataire({
-            id_prestataire: this.prestataire.id_prestataire,
-            id_user: this.user.id_user,
-            libelle_avis: this.comment,
-          });
-          this.$router.push({ name: 'artistId', params: { id: this.prestataire.id_prestataire } });
-        }
-      },
     },
 }
 </script>

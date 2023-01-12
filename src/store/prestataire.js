@@ -6,6 +6,7 @@ export default {
     state: {
         allPrestataires: null,
         prestataire: null,
+        allService: null,
     },
     getters: {
         allPrestataires (state) {
@@ -14,6 +15,9 @@ export default {
         prestataire (state) {
             return state.prestataire
         },
+        allServices (state) {
+            return state.allService
+        }
     },
     mutations: {
         SET_ALL_PRESTATAIRES (state, allPrestataires) {
@@ -24,6 +28,9 @@ export default {
         },
         SET_GUEST_BOOK_PRESTATAIRE (state, guestBookPrestataire) {
             state.prestataire.guestBook = guestBookPrestataire
+        },
+        SET_SERVICE_PRESTATAIRE (state, allServices) {
+            state.allService = allServices
         }
     },
     actions: {
@@ -36,7 +43,6 @@ export default {
         },
         async getPrestataire ({ commit }, id) {
             let response = await Vue.axios.get(`http://localhost:3000/prestataire/${id}`)
-            console.log(response.data)
             commit('SET_PRESTATAIRE', response.data);
         },
         async getGuestBookPrestataire ({ commit }, id) {
@@ -57,7 +63,7 @@ export default {
                 console.log("axios error guestbook/");
                 console.log(response.data.message);
             }
-            await commit('SET_GUEST_BOOK_ARTIST', response.data)
+            await commit('SET_GUEST_BOOK_PRESTATAIRE', response.data)
         },
         async deleteCommentPrestataire ({dispatch},{id_avis, id_prestataire}) {
             let res = await Vue.axios.delete('http://localhost:3000/guest_book/' + id_avis)
@@ -66,6 +72,37 @@ export default {
                 console.log(res.data.message);
             }
             await dispatch('getGuestBookPrestataire', id_prestataire)
-        }
+        },
+        async deleteServicePrestataire ({dispatch},{id_prestataire, id_service}) {
+            let res = await Vue.axios.delete('http://localhost:3000/propose/one?id_prestataire='+ id_prestataire +'&id_service='+id_service)
+            if (res.status === 500) {
+                console.log("axios error propose/" );
+                console.log(res.data.message);
+            }
+            else {
+                console.log("succes")
+            }
+            await dispatch('getServicePrestataire', id_prestataire)
+        },
+        async getServicePrestataire ({ commit }) {
+            let response = await Vue.axios.get('http://localhost:3000/propose/')
+            if (response.status === 500) {
+                console.log("axios error propose/");
+                console.log(response.data.message);
+            }
+            console.log(response.data)
+            await commit('SET_SERVICE_PRESTATAIRE', response.data)
+        },
+        async addServicePrestataire ({ commit }, {id_prestataire, libelle_service}) {
+            let response = await Vue.axios.post('http://localhost:3000/propose/withnewservice/', {
+                id_prestataire: id_prestataire,
+                libelle_service: libelle_service
+            })
+            if (response.status === 500) {
+                console.log("axios error service add/");
+            }
+            console.log(response.data)
+            await commit('SET_SERVICE_PRESTATAIRE', response.data)
+        },
     },
 }
