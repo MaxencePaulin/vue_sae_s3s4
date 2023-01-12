@@ -2,7 +2,7 @@
 
     <div class="map" id="map">
         <div class="map__image" style="background-color: #FFC300; ">
-            <p style="text-align: center; font-size: 200%;">MAP INTERACTIVE</p>
+            <p style="text-align: center; font-size: 150%;">MAP INTERACTIVE</p>
 
             <svg
                 width="297mm"
@@ -108,7 +108,7 @@
             </svg>
             <figcaption style="text-align: center;">🟥: Scènes 🟩: Prestataires</figcaption>
         </div>
-        <v-card v-if="currentInfo !== null" class="map__info" style="margin-left: 69em;margin-top: 3em; margin-right: 2em;">
+        <v-card v-if="currentInfo !== null" class="map__info" style="margin-left: 66em;margin-top: 10em; margin-right: 2em;">
             <v-card-title>{{ currentInfo.libelle_scene }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typescene.libelle_typescene }}</p>

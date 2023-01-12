@@ -365,16 +365,17 @@ export default {
 }
 
 .map__image {
-    margin-top: 5vh;
-    margin-left: 2vw;
-    width: 50%;
+    margin-top: 3vh;
+    margin-left: 1vw;
+    margin-bottom: 3vh;
+    width: 69%;
     float: left;
 }
 
 .map__image svg {
-    width: 88%;
-    height : 80%;
-    margin-left: 3vw;
+    width: 93%;
+    height : 100%;
+    margin-left: 2vw;
     margin-bottom: 1vh;
 }
 
@@ -389,6 +390,7 @@ export default {
 
 .fondBlanc {
   background-color: #373436;
+  height: 100%;
 }
 
 </style>
