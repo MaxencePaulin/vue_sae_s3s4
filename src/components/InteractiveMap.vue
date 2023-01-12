@@ -108,7 +108,7 @@
             </svg>
             <figcaption style="text-align: center;">🟥: Scènes 🟩: Prestataires</figcaption>
         </div>
-        <v-card v-if="status === 2" class="map__info" style="margin-left: 69em;margin-top: 3em; margin-right: 2em;">
+        <v-card v-if="status === 2" class="map__info" style="margin-left: 66em;margin-top: 3em; margin-right: 2em;">
             <v-card-title>{{ currentInfo.libelle_scene }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typescene.libelle_typescene }}</p>
@@ -131,7 +131,7 @@
                 />
             </v-card-actions>
         </v-card>
-        <v-card v-else-if="status === 1" class="map__info" style="margin-left: 69em;margin-top: 3em; margin-right: 2em;">
+        <v-card v-else-if="status === 1" class="map__info" style="margin-left: 66em;margin-top: 3em; margin-right: 2em;">
             <v-card-title>{{ currentInfo.libelle_prestataire }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typeprestataire.libelle_typeprestataire }}</p>
