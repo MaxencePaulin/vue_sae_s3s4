@@ -4,7 +4,7 @@
         <v-row>
         <v-col cols="8">
         <div class="map__image" style="background-color: #FFC300;">
-            <p style="text-align: center; font-size: 150%;">MAP INTERACTIVE</p>
+            <p style="text-align: center; font-size: 150%;">CARTE INTERACTIVE</p>
 
             <svg
                 width="297mm"

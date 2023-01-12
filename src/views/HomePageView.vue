@@ -38,10 +38,10 @@
       </div>
     </div>
     <div class="fondOrange">
-      <p class="text-over3">AN EXCEPTIONAL <br> MUSIC FESTIVAL <br> UNIQUE IN EUROPE !</p>
-      <p class="text-over4">The NoSleep Festival will be back in 2023. <br>
-        Wonderful things happen to those who come to <br>
-        the Festival!
+      <p class="text-over3">UN EXCEPTIONNEL <br> FESTIVAL DE MUSIQUE <br> UNIQUE EN EUROPE !</p>
+      <p class="text-over4">Le NoSleep Festival sera de retour en 2023. <br>
+          Des choses merveilleuses arrivent à ceux qui viennent au <br>
+        Festival !
       </p>
     </div>
     <div id="display-1">
@@ -49,50 +49,49 @@
       <div class="img3"></div>
       <div class="img4"></div>
     </div>
-    <div class="fondGris" id="Festival information">
+    <div class="fondGris" id="Informations sur le festival">
       <div class="flex">
         <div class="img5 basis-70">
-          <p class="text-over5">FESTIVAL INFORMATION</p>
+          <p class="text-over5">INFORMATION DU FESTIVAL</p>
         </div>
         <div class="pad-1">
-          <p class="text2">80 ARTISTS !</p>
-          <p class="text3">Discover more than 80 artists
-            from different countries with
-            different music styles </p>
-          <p class="text2">FOR YOU PLEASURE</p>
-          <p class="text3">Fast food and a camping
-            area at your disposal for a
-            100% experience</p>
-          <p class="text2">SHOP SOUVENIR</p>
-          <p class="text3">Keep your memories physical
-            with accessories and clothing</p>
+          <p class="text2">80 ARTISTES !</p>
+          <p class="text3">Découvrez plus de 80 artistes
+              de différents pays avec
+              différents styles de musique </p>
+          <p class="text2">POUR VOTRE PLAISIR</p>
+          <p class="text3">Un fast-food et un camping
+              à votre disposition pour une
+              expérience à 100%.</p>
+          <p class="text2">MAGASIN SOUVENIR</p>
+          <p class="text3">Gardez vos souvenirs physiques
+              avec des accessoires et des vêtements</p>
         </div>
       </div>
     </div>
-    <div class="fondBlanc" id="Interactive map">
+    <div class="fondBlanc" id="Carte interactive">
         <InteractiveMap />
     </div>
-    <div class="fondOrange1" id="Event details">
+    <div class="fondOrange1" id="Détails de l'événement">
       <div class="text4">
-        EVENT DETAILS
+          DÉTAILS DE L'ÉVÉNEMENT
       </div>
         <div>
           <div class="encadre">
-            <p class="text5">REGISTRATION</p>
-            <p class="text6">Registration begins 10 January,
-              2022 at www.NoSleepFestival.fr
-              /ticket</p>
+            <p class="text5">INSCRIPTION</p>
+            <p class="text6">Les inscriptions commencent le 10 janvier,
+                2022 à l'adresse www.NoSleepFestival.fr/ticket</p>
           </div>
         </div>
     </div>
-    <div class="fondGris1" id="Contact us">
+    <div class="fondGris1" id="Nous contacter">
         <div class="flex">
           <div class="pad-2">
-            <p class="text7 align-center">ADDRESS</p>
+            <p class="text7 align-center">ADRESSE</p>
             <p class="text8 align-center">Le grand bourg 69000 Lyon</p>
-            <p class="text7 align-center">MAIL ADDRESS</p>
+            <p class="text7 align-center">ADRESSE POSTALE</p>
             <p class="text8 align-center">info@nosleep-festival.fr</p>
-            <p class="text7 align-center">PHONE NUMBER</p>
+            <p class="text7 align-center">NUMÉRO DE TÉLÉPHONE</p>
             <p class="text8 align-center">01 22 57 48 94</p>
           </div>
           </div>
@@ -112,10 +111,10 @@ export default {
     },
     data: () => ({
         summarys: [
-            'Festival information',
-            'Interactive map',
-            'Event details',
-            'Contact us',
+            'Informations sur le festival',
+            'Carte interactive',
+            'Détails de l\'événement',
+            'Nous contacter',
         ],
         offsetTop: 0,
         goToOptions: {
