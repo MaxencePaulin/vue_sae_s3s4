@@ -278,7 +278,7 @@ export default {
 
 .fondBlanc {
   background-color: white;
-  height: 64vh;
+  height: 66vh;
   display: inline-block;
   position: relative;
 }

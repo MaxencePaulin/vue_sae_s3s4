@@ -29,7 +29,10 @@ export default {
     actions: {
         async getAllPrestataires ({ commit }) {
             let response = await Vue.axios.get('http://localhost:3000/prestataire/')
-            commit('SET_ALL_PRESTATAIRES', response.data);
+            if (response.status === 500) {
+                return -1;
+            }
+            await commit('SET_ALL_PRESTATAIRES', response.data);
         },
         async getPrestataire ({ commit }, id) {
             let response = await Vue.axios.get(`http://localhost:3000/prestataire/${id}`)

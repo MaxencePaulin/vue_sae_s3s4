@@ -27,7 +27,15 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: HomePageView
+        component: HomePageView,
+        beforeEnter: async (to, from, next) => {
+            let pres = await store.dispatch('prestataire/getAllPrestataires');
+            let scene = await store.dispatch('interactive/getAllScenes');
+            if (pres === -1 || scene === -1) {
+                return next({name: '404'});
+            }
+            next();
+        }
     },
     {
         path: '/about',
