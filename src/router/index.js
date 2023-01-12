@@ -13,6 +13,7 @@ import SearchPrestataire from "@/views/SearchPrestataire";
 import ArtistView from "@/views/ArtistView.vue";
 import PrestataireView  from "@/views/PrestataireView.vue";
 import AddCommentView from "@/views/AddCommentView.vue";
+import AddCommentViewPrest from "@/views/AddCommentViewPrest.vue";
 import feedBackView from "@/views/FeedBackView.vue";
 import AddCommentFestView from "@/views/AddCommentFestView.vue";
 import TicketView from "@/views/TicketView.vue";
@@ -149,7 +150,7 @@ const routes = [
     {
         path: "/commentPrestataire/:id",
         name: "commentPrestataire",
-        component: AddCommentView,
+        component: AddCommentViewPrest,
         beforeEnter: async (to, from, next) => {
             if (!store.getters['auth/authenticated']) {
                 return next({ name: 'login' })
