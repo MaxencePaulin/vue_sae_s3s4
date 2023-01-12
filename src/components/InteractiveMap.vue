@@ -201,6 +201,7 @@ export default {
         setCurrentInfo(id){
             this.currentInfo = null;
             this.status = 0;
+            this.currentPage = 0;
             if(id != -1){
                 if(id.includes('Presta')){
                     this.currentInfo = this.allPrestataires[id.replace('Presta', '') - 1];
