@@ -60,31 +60,31 @@
                     <path id="path1104" style="fill:none;stroke:#ddb35c;stroke-width:1.32292;stroke-dasharray:none;stroke-opacity:1" d="M 223.97388,31.212686 C 206.55217,29.545634 185.81292,43.35945 195.50373,66.343283 m -17.23881,4.570894 31.60448,13.712687 14.36567,-2.742538 -4.04851,8.358208 -4.0485,1.044776 -7.44403,-6.791044 -5.22389,9.664179 -10.44776,-6.138058 -29.10593,5.82277 59.27384,-12.091427 m 4.3097,-50.27985 4.96269,2.350747 c 10.59167,8.931615 11.23237,14.489091 12.14552,27.425371 -11.05006,25.247036 -34.23567,26.981739 -48.71268,6.268657 m 26.77239,22.462685 2.22014,-2.742535 28.86194,1.828358 0.65299,-13.451494 -0.52239,13.712688 20.76492,2.742536 -1.43655,-17.5 h -7.05226 l -23.63805,1.436569 11.88433,-0.130599 v -1.567164 l 1.69776,-14.365671 -4.83209,-2.873134 -1.30597,-8.227613 1.82836,-6.660446 -10.05597,-11.100747 -3.91791,-0.783582 -5.87687,1.958956 -7.05224,-5.22388 v -4.570896 l -3.78731,-7.705224 -4.04851,-8.2276113 -47.7985,79.2723853 8.6194,-1.697759 8.22761,-6.13806 6.52986,-6.791044 6.66044,-9.533583 4.96269,-6.52985 4.70149,-6.791045 6.13806,-6.921642 6.52985,-8.358209 1.95896,-1.697761 1.43656,-3.91791 1.95896,3.656716 -3.52612,0.130597 M 84.626864,125.24254 125.11194,114.53358 c 7.01769,-2.62342 5.96161,-3.09797 9.01119,-9.86007 m -48.582088,27.62126 -0.652984,-7.70522 -45.317163,9.66418 -8.358209,1.56716 -2.677239,-3.52611 m -12.733208,-8.35821 17.5,-3.65672 14.626865,-3.78732 13.0597,-5.48507 17.238806,-8.48881 4.701492,17.10821 -4.832088,-17.10821 10.447761,-5.354473 24.813435,-1.828358 1.69776,8.880601 -33.955226,6.26865 33.955226,-6.26865 1.69776,7.83581 -3.65672,-16.716411 49.62687,-7.83582 5.74627,-0.914181 -7.05224,11.361941 -5.09329,2.742541 -16.84701,3.13433 c -2.65547,0.39179 -4.92444,0.68695 -7.96642,1.17537 m -115.970145,18.80597 5.615671,2.35074 7.574626,6.26866 54.589552,-12.27612 33.955226,-8.09701 c 4.86474,-2.3834 8.37229,-5.03823 14.59421,-7.15019" sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" sodipodi:insensitive="true" inkscape:label="chemins" />
 
                     <!-- Prestataires -->
-                    <a xlink:href="http://google.com" @mouseover="over('Presta9')" @mouseleave="leave()" id="Presta9" xlink:title="presta9">
+                    <a @mouseover="over('Presta9')" @mouseleave="leave()" @click="setCurrentInfo('Presta9')" id="Presta9" :xlink:title="allPrestataires[8].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20082" d="m 214.16681,32.59241 c 2.99924,-3.515743 7.09641,-11.677785 -0.66534,-11.920687 -7.43477,1.736403 -1.11014,8.761102 0.66534,11.920687 z" sodipodi:nodetypes="ccc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta8')" @mouseleave="leave()" id="Presta8" xlink:title="presta8">
+                    <a @mouseover="over('Presta8')" @mouseleave="leave()" @click="setCurrentInfo('Presta8')" id="Presta8" :xlink:title="allPrestataires[7].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20081" d="m 203.73112,55.642507 c 0.50258,-0.58913 1.03599,-1.308728 1.53927,-2.099668 2.50009,-3.929122 4.2565,-9.618814 -2.20461,-9.821013 -7.43477,1.736401 -1.11014,8.761101 0.66534,11.920681 z" sodipodi:nodetypes="cscc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta7')" @mouseleave="leave()" id="Presta7" xlink:title="presta7">
+                    <a @mouseover="over('Presta7')" @mouseleave="leave()" @click="setCurrentInfo('Presta7')" id="Presta7" :xlink:title="allPrestataires[6].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20081" d="m 189.48344,63.195795 c 2.99923,-3.515738 7.0964,-11.677776 -0.66534,-11.920678 -7.43478,1.736403 -1.11015,8.761097 0.66534,11.920678 z" sodipodi:nodetypes="ccc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta6')" @mouseleave="leave()" id="Presta6" xlink:title="presta6">
+                    <a @mouseover="over('Presta6')" @mouseleave="leave()" @click="setCurrentInfo('Presta6')" id="Presta6" :xlink:title="allPrestataires[5].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20081" d="m 200.40666,86.486082 c 2.99923,-3.51573 7.09641,-11.677779 -0.66534,-11.920681 -7.43477,1.736401 -1.11014,8.761101 0.66534,11.920681 z" sodipodi:nodetypes="ccc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta5')" @mouseleave="leave()" id="Presta5" xlink:title="presta5">
+                    <a @mouseover="over('Presta5')" @mouseleave="leave()" @click="setCurrentInfo('Presta5')" id="Presta5" :xlink:title="allPrestataires[4].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20081" d="m 148.87758,106.61752 c 2.99923,-3.51573 7.09641,-11.677781 -0.66534,-11.920683 -7.43477,1.736401 -1.11014,8.761103 0.66534,11.920683 z" sodipodi:nodetypes="ccc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta4')" @mouseleave="leave()" id="Presta4" xlink:title="presta4">
+                    <a @mouseover="over('Presta4')" @mouseleave="leave()" @click="setCurrentInfo('Presta4')" id="Presta4" :xlink:title="allPrestataires[3].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20082" d="m 118.44317,104.36103 c 2.99923,-3.51574 7.0964,-11.677782 -0.66534,-11.920684 -7.43477,1.736403 -1.11014,8.761104 0.66534,11.920684 z" sodipodi:nodetypes="ccc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta3')" @mouseleave="leave()" id="Presta3" xlink:title="presta3">
+                    <a @mouseover="over('Presta3')" @mouseleave="leave()" @click="setCurrentInfo('Presta3')" id="Presta3" :xlink:title="allPrestataires[2].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20081" d="m 85.528199,123.23981 c 2.999233,-3.51573 7.09641,-11.67778 -0.665336,-11.92068 -7.434776,1.7364 -1.110144,8.7611 0.665336,11.92068 z" sodipodi:nodetypes="ccc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta2')" @mouseleave="leave()" id="Presta2" xlink:title="presta2">
+                    <a @mouseover="over('Presta2')" @mouseleave="leave()" id="Presta2" @click="setCurrentInfo('Presta2')" :xlink:title="allPrestataires[1].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20081" d="M 54.60919,110.5196 C 57.608423,107.00387 61.7056,98.841821 53.943854,98.598919 46.509078,100.33532 52.83371,107.36002 54.60919,110.5196 Z" sodipodi:nodetypes="ccc"/>
                       </a>
-                    <a xlink:href="http://google.com" @mouseover="over('Presta1')" @mouseleave="leave()" id="Presta1" xlink:title="presta1">
+                    <a @mouseover="over('Presta1')" @mouseleave="leave()" id="Presta1" @click="setCurrentInfo('Presta1')" :xlink:title="allPrestataires[0].typeprestataire.libelle_typeprestataire">
                           <path style="fill:#6cff6c;fill-opacity:1;stroke-width:1.20081" d="m 44.157176,126.93364 c 2.999233,-3.51573 7.09641,-11.67778 -0.665336,-11.92068 -7.434776,1.7364 -1.110144,8.7611 0.665336,11.92068 z" sodipodi:nodetypes="ccc"/>
                       </a>
 
@@ -109,14 +109,38 @@
                 Scène en rouge<br>Prestataire en vert
 
         </div>
-        <v-card v-if="currentInfo !== null" class="map__info" style="margin-left: 69em;margin-top: 3em; margin-right: 2em;">
+        <v-card v-if="status === 2" class="map__info" style="margin-left: 69em;margin-top: 3em; margin-right: 2em;">
             <v-card-title>{{ currentInfo.libelle_scene }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typescene.libelle_typescene }}</p>
             </v-card-text>
+            <v-card-text v-for="concert in concerts" :key="concert.id_scene">
+                <p>Date concert : {{ concert.date_concert }}</p>
+                <p>Scene : {{ concert.id_artist }}</p>
+                <p>Nom de l'artiste : {{ concert.artist.name }}</p>
+                <p>Lieu : {{ concert.scene.typescene.libelle_typescene }}</p>
+            </v-card-text>
             <v-card-actions>
+                <v-btn  color="red" text @click="setCurrentInfo(-1)">Retirer la séléction</v-btn>
                 <v-spacer></v-spacer>
-                <v-btn  color="amber" text @click="setCurrentInfo(-1)">Retirer la séléction</v-btn>
+                <pagination-component
+                    :data="currentInfo.concert"
+                    :currentPage="currentPage"
+                    :perPage="perPage"
+                    :colorcss="colorcss"
+                    @page-update="updatePage"
+                />
+            </v-card-actions>
+        </v-card>
+        <v-card v-else-if="status === 1" class="map__info" style="margin-left: 69em;margin-top: 3em; margin-right: 2em;">
+            <v-card-title>{{ currentInfo.libelle_prestataire }}</v-card-title>
+            <v-card-text>
+                <p>{{ currentInfo.typeprestataire.libelle_typeprestataire }}</p>
+            </v-card-text>
+            <v-card-actions>
+                <v-btn  color="red" text @click="setCurrentInfo(-1)">Retirer la séléction</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn  color="amber" text @click="goToPage(currentInfo.id_prestataire)">Voir la page</v-btn>
             </v-card-actions>
         </v-card>
         <div class="map__list">
@@ -142,16 +166,36 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
+import PaginationComponent from '@/components/PaginationComponent'
 
 export default {
     name: "InteractiveMap",
+    components: {
+        PaginationComponent
+    },
     data: () => ({
-        currentInfo: null
+        status: 0,
+        currentInfo: null,
+        currentPage: 0,
+        perPage: 1,
+        colorcss: {
+            color: "rgb(50,50,50)"
+        },
     }),
     computed: {
         ...mapState('interactive', ['allScenes']),
-        ...mapState('prestataire', ['allPrestataires'])
+        ...mapState('prestataire', ['allPrestataires']),
+        ...mapGetters('concert', ['allConcerts']),
+        concerts (){
+          if (this.currentInfo.concert) {
+                return this.currentInfo.concert.slice(
+                    this.currentPage * this.perPage,
+                    (this.currentPage + 1) * this.perPage
+                );
+          }
+          return [];
+        },
     },
     methods: {
         activeArea(id) {
@@ -169,18 +213,26 @@ export default {
             this.activeArea();
         },
         setCurrentInfo(id){
+            this.currentInfo = null;
+            this.status = 0;
             if(id != -1){
-                // exclure le 1 dans Presta1
                 if(id.includes('Presta')){
                     this.currentInfo = this.allPrestataires[id.replace('Presta', '') - 1];
                     console.log(this.currentInfo)
+                    this.status = 1
                 }else{
                     this.currentInfo = this.allScenes[id.replace('Scene', '') - 1];
-                    console.log(this.currentInfo)
+                    this.currentInfo.concert = this.allConcerts.filter(concert => concert.id_scene === this.currentInfo.id_scene)
+                    this.status = 2
                 }
-            }else
-                this.currentInfo = null;
-        }
+            }
+        },
+        goToPage(idx) {
+            this.$router.push({name: 'prestataireId', params: {id: idx}})
+        },
+        updatePage(pageNumber) {
+            this.currentPage = pageNumber;
+        },
     }
 }
 </script>

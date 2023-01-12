@@ -20,6 +20,9 @@ export default {
     actions: {
         async getAllConcerts ({ commit }) {
             let response = await Vue.axios.get('http://localhost:3000/concert/')
+            if (response.status === 500) {
+                return -1;
+            }
             commit('SET_ALL_CONCERTS', response.data)
         }
     }

@@ -38,9 +38,17 @@
                             <v-card-text v-for="concert in concerts" :key="concert.id_artist">
                                <p>Date concert : {{ concert.date_concert }}</p>
                                <p>Scene : {{ concert.id_scene }}</p>
-                               <p>Lieu : {{ concert.scene.libelle_scene }}</p>
+                               <p>Nom de la scène : {{ concert.scene.libelle_scene }}</p>
                                <p>Lieu : {{ concert.scene.typescene.libelle_typescene }}</p>
                             </v-card-text>
+                            <v-card-actions>
+                                <pagination-component
+                                    :data="concertArt"
+                                    :currentPage="currentPageConcert"
+                                    :perPage="perPageConcert"
+                                    :colorcss="colorcss"
+                                    @page-update="updatePageConcert"></pagination-component>
+                            </v-card-actions>
                         </v-card>
                     </v-col>
                 </v-row>
@@ -88,6 +96,8 @@ export default {
         colorcss: {
             color: "rgb(50,50,50)"
         },
+        currentPageConcert: 0,
+        perPageConcert: 3,
     }),
     computed: {
         ...mapGetters('concert',['allConcerts']),
@@ -102,8 +112,17 @@ export default {
             }
             return [];
         },
+        concertArt() {
+            return this.allConcerts.filter(concert => concert.id_artist === this.artist.id_artist);
+        },
         concerts (){
-          return this.allConcerts.filter(concert => concert.id_artist === this.artist.id_artist)
+          if (this.concertArt) {
+                return this.concertArt.slice(
+                    this.currentPageConcert * this.perPageConcert,
+                    (this.currentPageConcert + 1) * this.perPageConcert
+                );
+          }
+          return [];
         },
         currentUser () {
             if (this.user) {
@@ -115,6 +134,9 @@ export default {
     methods: {
         updatePage(pageNumber) {
             this.currentPage = pageNumber;
+        },
+        updatePageConcert(pageNumber) {
+            this.currentPageConcert = pageNumber;
         },
         goToComment() {
             this.$router.push({name: 'commentArtist', params: {id: this.artist.id_artist}}).catch(() => {});
