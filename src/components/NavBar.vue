@@ -185,5 +185,6 @@ export default {
 <style scoped>
 .police {
     font-family: 'Garamond', serif;
+    font-weight: bold;
 }
 </style>

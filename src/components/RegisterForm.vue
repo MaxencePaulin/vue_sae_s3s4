@@ -175,18 +175,19 @@ export default {
             (v) => v.length <= 20 || "Le nom doit être inférieur à 20 caractères",
         ],
         dobRules: [
-            (v) => v.length <= 20 || "La date de naissance doit être inférieur à 20 caractères",
-            (v) => /^\d{4}-\d{2}-\d{2}$/.test(v) || "La date de naissance doit être au format YYYY-MM-DD",
+            (v) => v.length <= 20 || "La date de naissance doit être inférieur à 10 caractères",
+            (v) => !v || /^\d{2}\/\d{2}\/\d{4}$/.test(v) || "La date de naissance doit être au format JJ/MM/AAAA",
         ],
         addressRules: [
             (v) => v.length <= 50 || "L'adresse doit être inférieur à 50 caractères"
         ],
         mobileRules: [
-            (v) => v.length <= 20 || "Le numéro de téléphone doit être inférieur à 50 caractères"
+            (v) => v.length <= 20 || "Le numéro de téléphone doit être inférieur à 50 caractères",
+            (v) => !v || /^\d+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres"
         ],
         genreRules: [
             (v) => v.length <= 20 || "Le genre doit être inférieur à 20 caractères",
-            (v) => /^(homme|femme|autre|male|female|other)$/.test(v.toLowerCase()) || "Le genre doit être homme, femme ou autre (male, female or other)"
+            (v) => !v || /^(homme|femme|autre|male|female|other)$/.test(v.toLowerCase()) || "Le genre doit être homme, femme ou autre (male, female or other)"
         ],
     }),
     methods: {

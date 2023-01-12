@@ -38,31 +38,30 @@ export default {
 
     actions: {
         async signIn ({ dispatch }, credentials) {
-            await Vue.axios.post('http://localhost:3000/users/login', credentials)
-                .then((response) => {
-                    return dispatch('attempt', response.data.data.token)
-                })
+            let response = await Vue.axios.post('http://localhost:3000/users/login', credentials)
+            dispatch('attempt', response.data.data.token)
         },
 
         async attempt ({ commit, state }, token) {
             if (token) {
-                commit('SET_TOKEN', token)
+                await commit('SET_TOKEN', token)
             }
 
             if (!state.token) {
                 return
             }
 
-            await Vue.axios.get('http://localhost:3000/users/me')
-                .then((response) => {
-                    commit('SET_USER', response.data.data)
-                })
-                .catch((e) => {
-                    commit('SET_TOKEN', null);
-                    commit('SET_USER', null);
-                    console.log("axiox error users/me");
-                    console.log(e);
-            })
+            try {
+                let response = await Vue.axios.get('http://localhost:3000/users/me')
+
+                await commit('SET_USER', response.data.data)
+            } catch (e) {
+                commit('SET_TOKEN', null);
+                commit('SET_USER', null);
+                console.log("axiox error users/me");
+                console.log(e);
+            }
+
         },
 
         signOut ({ commit }) {
@@ -82,6 +81,17 @@ export default {
                 return -1;
             }
             await commit('SET_TICKET', response.data);
+        },
+
+        async updateAccount({ dispatch, state }, data) {
+            if (!state.token || !state.user) {
+                return;
+            }
+            let response = await Vue.axios.put('http://localhost:3000/users/' + state.user.id_user, data);
+            if (response.status === 500) {
+                return -1;
+            }
+            await dispatch('attempt', this.token);
         }
     },
 }

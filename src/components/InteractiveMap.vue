@@ -112,7 +112,7 @@
         </div>
         </v-col>
         <v-col cols="4">
-        <v-card v-if="status === 2" class="map__info" style="margin: 5vh">
+        <v-card v-if="status === 2" class="map__info" style="margin-top: 10vh;margin-right: 5vh;">
             <v-card-title>{{ currentInfo.libelle_scene }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typescene.libelle_typescene }}</p>
@@ -135,7 +135,7 @@
                 />
             </v-card-actions>
         </v-card>
-        <v-card v-else-if="status === 1" class="map__info" style="margin: 5vh">
+        <v-card v-else-if="status === 1" class="map__info" style="margin-top: 20vh;margin-right: 5vh">
             <v-card-title>{{ currentInfo.libelle_prestataire }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typeprestataire.libelle_typeprestataire }}</p>
