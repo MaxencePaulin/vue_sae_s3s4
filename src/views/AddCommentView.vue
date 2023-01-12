@@ -3,7 +3,6 @@
         <v-card style="margin: 5vh; background-color:rgb(255,222,89)">
             <v-card-title>
                 <h2>Ajouter un avis sur {{ artist.name }}</h2>
-                <h2>Ajouter un avis sur {{ prestataire.name }}</h2>
             </v-card-title>
             <v-card-subtitle>
                 <h3>Connecté sur le compte : {{ user.login }}</h3>
