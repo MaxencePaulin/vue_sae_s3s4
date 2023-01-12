@@ -368,7 +368,6 @@ export default {
     margin-top: 3vh;
     margin-left: 1vw;
     margin-bottom: 3vh;
-    width: 69%;
     float: left;
 }
 

@@ -1,7 +1,9 @@
 <template>
 
     <div class="map" id="map">
-        <div class="map__image" style="background-color: #FFC300; ">
+        <v-row>
+        <v-col cols="8">
+        <div class="map__image" style="background-color: #FFC300;">
             <p style="text-align: center; font-size: 150%;">MAP INTERACTIVE</p>
 
             <svg
@@ -108,7 +110,9 @@
             </svg>
             <figcaption style="text-align: center;">🟥: Scènes 🟩: Prestataires</figcaption>
         </div>
-        <v-card v-if="status === 2" class="map__info" style="margin-left: 66em;margin-top: 3em; margin-right: 2em;">
+        </v-col>
+        <v-col cols="4">
+        <v-card v-if="status === 2" class="map__info" style="margin: 5vh">
             <v-card-title>{{ currentInfo.libelle_scene }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typescene.libelle_typescene }}</p>
@@ -131,7 +135,7 @@
                 />
             </v-card-actions>
         </v-card>
-        <v-card v-else-if="status === 1" class="map__info" style="margin-left: 66em;margin-top: 3em; margin-right: 2em;">
+        <v-card v-else-if="status === 1" class="map__info" style="margin: 5vh">
             <v-card-title>{{ currentInfo.libelle_prestataire }}</v-card-title>
             <v-card-text>
                 <p>{{ currentInfo.typeprestataire.libelle_typeprestataire }}</p>
@@ -142,7 +146,8 @@
                 <v-btn  color="amber" text @click="goToPage(currentInfo.id_prestataire)">Voir la page</v-btn>
             </v-card-actions>
         </v-card>
-
+        </v-col>
+    </v-row>
     </div>
 </template>
 
