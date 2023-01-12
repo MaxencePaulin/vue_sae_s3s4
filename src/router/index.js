@@ -201,10 +201,16 @@ const routes = [
         path: "/account",
         name: "account",
         component: AccountView,
-        beforeEnter: (to, from, next) => {
+        beforeEnter: async (to, from, next) => {
             if (!store.getters['auth/authenticated']) {
                 return next({
                     name: 'login'
+                })
+            }
+            let ticket = await store.dispatch('auth/getTicket', store.getters["auth/user"].id_user)
+            if (ticket === -1) {
+                return next({
+                    name:'404'
                 })
             }
             next()
