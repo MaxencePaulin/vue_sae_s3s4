@@ -31,7 +31,7 @@
                 {{ summary }}
             </v-btn>
         </v-row>
-      <div class="text1"><img src="@/assets/logo_v1.png" style="margin-left: 28em;" height="200" width="200">
+      <div class="text1">
         <p class="text-over1">NO SLEEP FESTIVAL</p>
         <p class="text-over1"> FRANCE 2023</p>
         <p class="text-over2">22.07.23 - 26.07.23 LYON, LE GRAND BOURG</p>
