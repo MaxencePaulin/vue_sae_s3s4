@@ -365,17 +365,18 @@ export default {
 }
 
 .map__image {
-    width: 50%;
+    margin-top: 3vh;
+    margin-left: 1vw;
+    margin-bottom: 3vh;
+    width: 69%;
     float: left;
 }
 
 .map__image svg {
-    width: 100%
-}
-
-.map__list {
-    width: 50%;
-    float: right;
+    width: 93%;
+    height : 100%;
+    margin-left: 2vw;
+    margin-bottom: 1vh;
 }
 
 .map__image path {
@@ -387,20 +388,9 @@ export default {
     opacity: 1;
 }
 
-.map__list a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.map__list a:hover {
-    font-size: 120%;
-}
-
-.map__list a.is-active {
-    color: blue;
-    font-weight: bold;
-    text-decoration: underline;
+.fondBlanc {
+  background-color: #373436;
+  height: 100%;
 }
 
 </style>
