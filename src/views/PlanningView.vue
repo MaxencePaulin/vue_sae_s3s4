@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td class="artist" style="border: black solid 1px;">Scene</td>
-                <td class="artist" style="border: black solid 1px;"></td>
+                <td class="artist" style="border: black solid 1px;">Artiste</td>
                 <td class="artist" style="border: black solid 1px;">Artiste</td>
                 <td class="artist" style="border: black solid 1px;">Artiste</td>
                 <td class="artist" style="border: black solid 1px;">Artiste</td>
@@ -42,12 +42,12 @@
 
 
 <script>
-import { mapGetters } from 'vuex';
+import { /*mapGetters,*/ mapState } from 'vuex';
 
 export default {
     name: "PlanningView",
     computed: {
-        ...mapGetters('artist', ['artist']),
+        ...mapState(['artist']),
     }
 }
 </script>
