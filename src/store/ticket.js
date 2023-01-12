@@ -49,6 +49,15 @@ export default {
                 return -1;
             }
             await commit('SET_CURRENT_TICKET', response.data);
+        },
+        async buyTicket ({ dispatch }, ticket) {
+            let response = await Vue.axios.post('http://localhost:3000/bought/', ticket)
+            if (response.status === 500) {
+                console.log("axios error ticket/");
+                console.log(response.data.message);
+                return -1;
+            }
+            await dispatch('getAllTicket');
         }
     },
 }

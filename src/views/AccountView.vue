@@ -78,7 +78,6 @@
                             <v-card-subtitle>
                                 Ticket valide du {{ e.date_start_validity }} au {{ e.date_end_validity }}
                             </v-card-subtitle>
-
                         </v-card>
                         <v-card-actions>
                             <PaginationComponent :data=userTicket :currentPage="currentPage" :perPage="perPage" :colorcss="colorcss" @page-update="updatePage" />

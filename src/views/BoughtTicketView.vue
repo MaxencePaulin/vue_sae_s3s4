@@ -90,8 +90,18 @@ export default {
     },
     methods: {
         buyOneTicket(date) {
-            console.log(date);
-        },
+            if (confirm('Voulez vous vraiment acheter un ticket du type ' + this.currentTicket.type_ticket + ' pour la date du ' + date.date_start_validity + ' au ' + date.date_end_validity + ' ?')) {
+                this.$store.dispatch('ticket/buyTicket', {
+                    id_user: this.currentUser.id_user,
+                    id_ticket: this.$route.params.id,
+                    date_start_validity: date.date_start_validity,
+                    date_end_validity: date.date_end_validity,
+                }).then(() => {
+                    alert('Ticket acheté avec succès !');
+                    this.$router.push('/account');
+                });
+            }
+        }
     },
 }
 </script>

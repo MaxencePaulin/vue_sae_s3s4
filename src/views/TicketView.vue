@@ -19,7 +19,7 @@
                 </v-card-subtitle>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="black" text @click="buyOneTicket(ticket.id_ticket)">Acheter</v-btn>
+                    <v-btn color="black" text @click="buyOneTicket(ticket.id_ticket)">Voir</v-btn>
                 </v-card-actions>
             </v-card>
             <v-card-actions>
