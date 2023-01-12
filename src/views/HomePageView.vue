@@ -31,9 +31,8 @@
                 {{ summary }}
             </v-btn>
         </v-row>
-
-      <div class="text1">
-        <p class="text-over1">NO SLEEP FESTIVAL </p>
+      <div class="text1"><img src="@/assets/logo_v1.png" style="margin-left: 28em;" height="200" width="200">
+        <p class="text-over1">NO SLEEP FESTIVAL</p>
         <p class="text-over1"> FRANCE 2023</p>
         <p class="text-over2">22.07.23 - 26.07.23 LYON, LE GRAND BOURG</p>
       </div>
@@ -162,6 +161,14 @@ export default {
   background-size: 100%;
   width: 100vw;
   height: 47vw;
+}
+
+.icon {
+    position: relative;
+    background-image: url('@/assets/logo_v1.png');
+    background-size: 10%;
+    width: 50vw;
+    height: 20vw;
 }
 
 .theme {
