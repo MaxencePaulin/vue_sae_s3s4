@@ -14,12 +14,14 @@ import ArtistView from "@/views/ArtistView.vue";
 import PrestataireView  from "@/views/PrestataireView.vue";
 import AddCommentView from "@/views/AddCommentView.vue";
 import AddCommentViewPrest from "@/views/AddCommentViewPrest.vue";
+import AddServiceView from "@/views/AddServiceView.vue";
 import feedBackView from "@/views/FeedBackView.vue";
 import AddCommentFestView from "@/views/AddCommentFestView.vue";
 import TicketView from "@/views/TicketView.vue";
 import BoughtTicketView from "@/views/BoughtTicketView.vue";
 
 import PlanningView from '../views/PlanningView.vue';
+
 
 Vue.use(VueRouter)
 
@@ -125,6 +127,23 @@ const routes = [
             await store.dispatch('prestataire/getGuestBookPrestataire', to.params.id).catch(() => {
                 return next({ name: '404' })
             });
+            await store.dispatch('prestataire/getServicePrestataire').catch(() => {
+                return next({ name: '404' })
+            });
+            next();
+        }
+    },
+    {
+        path: "/addService",
+        name: "addService",
+        component: AddServiceView,
+        beforeEnter: async (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({ name: 'login' })
+            }
+            await store.dispatch('prestataire/getAllPrestataires').catch(() => {
+                return next({ name: '404' })
+            });
             next();
         }
     },
@@ -159,9 +178,6 @@ const routes = [
             await store.dispatch('prestataire/getPrestataire', to.params.id).catch(() => {
                 return next({ name: '404' })
             });
-            if (store.getters['prestataire/prestataire/artist'] === null) {
-                return next({ name: '404' });
-            }
             await store.dispatch('prestataire/getGuestBookPrestataire', to.params.id).catch(() => {
                 return next({ name: '404' })
             });
