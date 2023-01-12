@@ -2,7 +2,7 @@
 
     <div class="map" id="map">
         <div class="map__image">
-
+            <p style="margin-left: 5vw; text-align: center; font-size: 200%;">MAP INTERACTIVE</p>
 
             <svg
                 width="297mm"
@@ -105,9 +105,8 @@
                           <path style="fill:#ff0000;fill-opacity:1;stroke-width:1.20082" d="m 35.664429,116.65526 c 2.999234,-3.51574 7.096414,-11.67777 -0.665334,-11.92068 -7.434776,1.7364 -1.110144,8.7611 0.665334,11.92068 z" sodipodi:nodetypes="ccc"/>
                       </a>
                   </g>
-                  </svg>
-                Scène en rouge<br>Prestataire en vert
-
+            </svg>
+            <figcaption style="text-align: center;">🟥: Scènes 🟩: Prestataires</figcaption>
         </div>
         <v-card v-if="currentInfo !== null" class="map__info" style="margin-left: 69em;margin-top: 3em; margin-right: 2em;">
             <v-card-title>{{ currentInfo.libelle_scene }}</v-card-title>
@@ -119,24 +118,6 @@
                 <v-btn  color="amber" text @click="setCurrentInfo(-1)">Retirer la séléction</v-btn>
             </v-card-actions>
         </v-card>
-        <div class="map__list">
-            <ul>
-                <li><a href="http://google.com" id="Scene1">Scene1</a></li>
-                <li><a href="http://google.com" id="Scene2">Scene2</a></li>
-                <li><a href="http://google.com" id="Scene3">Scene3</a></li>
-                <li><a href="http://google.com" id="Scene4">Scene4</a></li>
-                <li><a href="http://google.com" id="Scene5">Scene5</a></li>
-                <li><a href="http://google.com" id="Presta1">Presta1</a></li>
-                <li><a href="http://google.com" id="Presta2">Presta2</a></li>
-                <li><a href="http://google.com" id="Presta3">Presta3</a></li>
-                <li><a href="http://google.com" id="Presta4">Presta4</a></li>
-                <li><a href="http://google.com" id="Presta5">Presta5</a></li>
-                <li><a href="http://google.com" id="Presta6">Presta6</a></li>
-                <li><a href="http://google.com" id="Presta7">Presta7</a></li>
-                <li><a href="http://google.com" id="Presta8">Presta8</a></li>
-                <li><a href="http://google.com" id="Presta9">Presta9</a></li>
-            </ul>
-        </div>
 
     </div>
 </template>

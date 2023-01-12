@@ -373,11 +373,6 @@ export default {
     width: 100%
 }
 
-.map__list {
-    width: 50%;
-    float: right;
-}
-
 .map__image path {
     opacity: 0.6;
 }
@@ -387,20 +382,17 @@ export default {
     opacity: 1;
 }
 
-.map__list a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
 .map__list a:hover {
     font-size: 120%;
 }
 
-.map__list a.is-active {
-    color: blue;
-    font-weight: bold;
-    text-decoration: underline;
+.fondBlanc {
+  background-color: #FFC300;
+  border-bottom: 20px solid #373436;
 }
 
+svg  {
+  height: 100%;
+  margin-left: 2vw;
+}
 </style>
