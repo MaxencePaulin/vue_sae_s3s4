@@ -9,7 +9,7 @@
                 NO SLEEP FESTIVAL
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <span v-if="authenticated" style="color: black; margin: 20px">{{ user.login }}</span>
+            <span v-if="authenticated" style="color: black; margin: 20px">Connecté en tant que : {{ user.login }}</span>
             <v-btn v-if="authenticated" color="rgb(50,50,50)" style="margin-right: 2vh" @click="signOut"><span style="color: #FFC107">Déconnexion</span></v-btn>
             <v-btn v-if="!authenticated" color="rgb(50,50,50)" style="margin-right: 2vh" @click="$router.push('/register').catch(() => {})"><span style="color: #FFC107">S'enregistrer</span></v-btn>
             <v-btn v-if="!authenticated" color="rgb(50,50,50)" style="margin-right: 2vh" @click="$router.push('/login').catch(() => {})"><span style="color: #FFC107">Connexion</span></v-btn>

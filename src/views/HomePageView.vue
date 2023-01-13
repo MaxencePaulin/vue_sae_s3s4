@@ -40,8 +40,8 @@
     <div class="fondOrange">
       <p class="text-over3">UN EXCEPTIONNEL <br> FESTIVAL DE MUSIQUE <br> UNIQUE EN EUROPE !</p>
       <p class="text-over4">Le NoSleep Festival sera de retour en 2023. <br>
-          Des choses merveilleuses arrivent à ceux qui viennent au <br>
-        Festival !
+          Venez vivre des moments inoubliable en venant au <br>
+        No Sleep Festival !
       </p>
     </div>
     <div id="display-1">
