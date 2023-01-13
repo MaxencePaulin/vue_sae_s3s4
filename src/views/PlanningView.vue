@@ -6,6 +6,7 @@
           <button name="button" class="button1" v-on:click="showTable1 = false, showTable2 = true, showTable3 = false, showTable4 = false">Jour 2</button>
           <button name="button" class="button1" v-on:click="showTable1 = false, showTable2 = false, showTable3 = true, showTable4 = false">Jour 3</button>
           <button name="button" class="button1" v-on:click="showTable1 = false, showTable2 = false, showTable3 = false, showTable4 = true">Jour 4</button>
+        <div class="center">
           <table v-if="showTable1">
             <thead>
             <tr>
@@ -62,6 +63,7 @@
             </tr>
             </tbody>
           </table>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -135,6 +137,12 @@ table{
 
 th, td{
     border: 1px solid black;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>

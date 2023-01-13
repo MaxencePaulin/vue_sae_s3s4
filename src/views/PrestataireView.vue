@@ -33,7 +33,7 @@
                   </ul>
               </v-card-text>
               <v-card-actions>
-                  <pagination-component :data=services :currentPage="currentPageService" :perPage="perPageService" :colorcss="colorcss" @page-update="updatePageService"></pagination-component>
+                  <pagination-component v-if="services.length > 4" :data=services :currentPage="currentPageService" :perPage="perPageService" :colorcss="colorcss" @page-update="updatePageService"></pagination-component>
                   <v-spacer></v-spacer>
                   <v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="goToService">Ajouter service</v-btn>
               </v-card-actions>
