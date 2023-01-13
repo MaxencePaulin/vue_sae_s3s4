@@ -43,7 +43,7 @@ export default {
         },
         async getPrestataire ({ commit }, id) {
             let response = await Vue.axios.get(`http://localhost:3000/prestataire/${id}`)
-            commit('SET_PRESTATAIRE', response.data);
+            await commit('SET_PRESTATAIRE', response.data);
         },
         async getGuestBookPrestataire ({ commit }, id) {
             let response = await Vue.axios.get('http://localhost:3000/guest_book/one?id_prestataire=' + id)
