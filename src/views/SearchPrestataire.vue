@@ -28,7 +28,7 @@
           <v-card>
             <v-card-title>
               <v-icon>mdi-account</v-icon>
-              <span class="headline">{{ prestataire.libelle_prestataire }}</span>
+              <span class="headline">{{ prestataire.libelle_prestataire }} <p v-if="currentUser?.id_prestataire === prestataire.id_prestataire">  (Vous)</p></span>
             </v-card-title>
             <v-card-text>
               <v-list-item>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import PaginationComponent from "@/components/PaginationComponent.vue";
 
 export default {
@@ -80,6 +80,13 @@ export default {
   },
   computed: {
     ...mapState('prestataire',['allPrestataires']),
+      ...mapGetters('auth', ['user']),
+      currentUser() {
+        if (this.user) {
+          return this.user;
+        }
+        return null;
+      },
     prestataireFilter() {
       return this.allPrestataires.filter((prestataire) => {
         return prestataire.libelle_prestataire.toLowerCase().includes(this.search.toLowerCase())

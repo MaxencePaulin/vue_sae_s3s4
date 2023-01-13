@@ -27,14 +27,15 @@
               <v-card-title>
                 <h2>Services :</h2>
               </v-card-title>
-              <v-card-text v-for="service in services" :key="service.id_service">
+              <v-card-text v-for="service in servicePaginate" :key="service.id_service">
                   <ul>
                       <li>{{ service.service.libelle_service }}<v-btn style="float: right" v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="confirmDeleteService(service.id_service)">Supprimer service</v-btn></li>
                   </ul>
               </v-card-text>
               <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="goToService">Ajouter service</v-btn>
+                  <pagination-component :data=services :currentPage="currentPageService" :perPage="perPageService" :colorcss="colorcss" @page-update="updatePageService"></pagination-component>
+                  <v-spacer></v-spacer>
+                  <v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="goToService">Ajouter service</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -79,11 +80,13 @@ export default {
   name: 'PrestataireView',
   components: {PaginationComponent},
   data: () => ({
-    currentPage: 0,
-    perPage: 9,
-    colorcss: {
+      currentPage: 0,
+      perPage: 9,
+      colorcss: {
       color: "rgb(50,50,50)"
-    },
+      },
+      currentPageService: 0,
+      perPageService: 4,
   }),
   computed: {
     ...mapGetters('prestataire',['prestataire', 'allServices']),
@@ -106,6 +109,15 @@ export default {
     services (){
       return this.allServices.filter(service => service.id_prestataire === this.prestataire.id_prestataire)
     },
+      servicePaginate() {
+          if (this.services) {
+            return this.services.slice(
+                  this.currentPageService * this.perPageService,
+                  (this.currentPageService + 1) * this.perPageService
+              );
+          }
+          return [];
+        },
   },
   methods: {
     ...mapActions('prestataire', ['getPrestataire', 'deleteCommentPrestataire','deleteServicePrestataire']),
@@ -133,7 +145,10 @@ export default {
               this.$router.go('/prestataire/' + this.prestataire.id_prestataire);
             });
       }
-    }
+    },
+      updatePageService(pageNumber) {
+      this.currentPageService = pageNumber;
+    },
   },
 }
 </script>
