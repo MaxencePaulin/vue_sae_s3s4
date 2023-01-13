@@ -23,7 +23,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="black" text @click="addComment">Ajouter</v-btn>
+        <v-btn color="black" text @click="addCommentPrest">Ajouter</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -54,7 +54,7 @@ export default {
           id_user: this.user.id_user,
           libelle_avis: this.comment,
         });
-        this.$router.push({ name: 'artistId', params: { id: this.prestataire.id_prestataire } });
+        this.$router.push({ name: 'prestataireId', params: { id: this.prestataire.id_prestataire } });
       }
     },
   },
