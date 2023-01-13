@@ -1,6 +1,6 @@
 <template>
   <v-container fluid style="margin-top: 5vh; margin-bottom: 5vh">
-    <v-card>
+    <v-card style="margin-left: 5vh;margin-right: 5vh;">
       <v-card-title>
         <h1>{{ prestataire.libelle_prestataire }}</h1>
       </v-card-title>
@@ -15,7 +15,7 @@
                 <p>{{ prestataire.libelle_prestataire }}</p>
               </v-card-text>
               <v-card-title>
-                <h2>Type prestataire :</h2>
+                <h2>Type de prestataire :</h2>
               </v-card-title>
               <v-card-text>
                 <p>{{ prestataire.typeprestataire.libelle_typeprestataire }}</p>
@@ -25,13 +25,15 @@
           <v-col cols="12" sm="6" md="6">
             <v-card>
               <v-card-title>
-                <h2>Service :</h2>
+                <h2>Services :</h2>
               </v-card-title>
-              <v-card-text v-for="service in service" :key="service.id_prestataire">
-                <li>{{ service.service.libelle_service }}<v-btn  color="black" text @click="confirmDeleteService(service.id_service)">Supprimer service</v-btn></li>
+              <v-card-text v-for="service in services" :key="service.id_service">
+                  <ul>
+                      <li>{{ service.service.libelle_service }}<v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="confirmDeleteService(service.id_service)">Supprimer service</v-btn></li>
+                  </ul>
               </v-card-text>
               <v-spacer></v-spacer>
-              <v-btn  color="black" text @click="goToService">Ajouter service</v-btn>
+              <v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="goToService">Ajouter service</v-btn>
             </v-card>
           </v-col>
         </v-row>
@@ -82,8 +84,7 @@ export default {
     },
   }),
   computed: {
-    ...mapGetters('prestataire',['prestataire']),
-    ...mapGetters('prestataire',['allServices']),
+    ...mapGetters('prestataire',['prestataire', 'allServices']),
     ...mapGetters('auth',['user']),
     guestBook () {
       if (this.prestataire.guestBook) {
@@ -100,7 +101,7 @@ export default {
       }
       return null;
     },
-    service (){
+    services (){
       return this.allServices.filter(service => service.id_prestataire === this.prestataire.id_prestataire)
     },
   },
