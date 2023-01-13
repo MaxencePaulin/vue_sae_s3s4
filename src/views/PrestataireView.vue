@@ -29,11 +29,13 @@
               </v-card-title>
               <v-card-text v-for="service in services" :key="service.id_service">
                   <ul>
-                      <li>{{ service.service.libelle_service }}<v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="confirmDeleteService(service.id_service)">Supprimer service</v-btn></li>
+                      <li>{{ service.service.libelle_service }}<v-btn style="float: right" v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="confirmDeleteService(service.id_service)">Supprimer service</v-btn></li>
                   </ul>
               </v-card-text>
-              <v-spacer></v-spacer>
-              <v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="goToService">Ajouter service</v-btn>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn v-if="currentUser?.id_prestataire === prestataire.id_prestataire || currentUser?.id_role === 3" color="black" text @click="goToService">Ajouter service</v-btn>
+              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
