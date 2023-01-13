@@ -19,9 +19,7 @@ import feedBackView from "@/views/FeedBackView.vue";
 import AddCommentFestView from "@/views/AddCommentFestView.vue";
 import TicketView from "@/views/TicketView.vue";
 import BoughtTicketView from "@/views/BoughtTicketView.vue";
-
 import PlanningView from '../views/PlanningView.vue';
-
 
 Vue.use(VueRouter)
 
@@ -248,7 +246,14 @@ const routes = [
     {
         path: "/planning",
         name: "planning",
-        component: PlanningView
+        component: PlanningView,
+        beforeEnter: async (to, from, next) => {
+            let response = await store.dispatch('concert/getAllConcerts');
+            if (response === -1) {
+                return next({ name: '404' });
+            }
+            next();
+        }
     },
     {
         path: "/ticket",

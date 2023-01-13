@@ -29,7 +29,6 @@
                 >
                     <v-list-item-avatar>
                         <img src="../assets/logo40x40.png" alt="logo?">
-                        <!-- <v-icon color="amber"></v-icon> -->
                     </v-list-item-avatar>
                     <span style="color:rgb(255, 222, 89)">
                         NO SLEEP FESTIVAL
@@ -80,7 +79,7 @@
                         <v-icon color="amber">mdi-account-music</v-icon>
                       </v-list-item-icon>
                       <v-list-item-title style="color: rgb(255, 222, 89)"
-                      >Rechercher un Prestataire
+                      >Rechercher un prestataire
                       </v-list-item-title
                       >
                     </v-list-item>
