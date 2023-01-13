@@ -29,13 +29,19 @@ const routes = [
         name: 'home',
         component: HomePageView,
         beforeEnter: async (to, from, next) => {
-            let pres = await store.dispatch('prestataire/getAllPrestataires');
-            let scene = await store.dispatch('interactive/getAllScenes');
-            let concert = await store.dispatch('concert/getAllConcerts');
-            if (pres === -1 || scene === -1 || concert === -1) {
+            try {
+                let pres = await store.dispatch('prestataire/getAllPrestataires');
+                let scene = await store.dispatch('interactive/getAllScenes');
+                let concert = await store.dispatch('concert/getAllConcerts');
+                if (pres === -1 || scene === -1 || concert === -1) {
+                    return next({name: '404'});
+                }
+                next();
+            }catch (e) {
+                console.log(e);
                 return next({name: '404'});
             }
-            next();
+
         }
     },
     {
