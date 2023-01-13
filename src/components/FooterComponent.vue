@@ -29,7 +29,4 @@ export default {
 </script>
 
 <style scoped>
-.police {
-    font-family: 'Garamond', serif;
-}
 </style>

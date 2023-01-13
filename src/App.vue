@@ -29,6 +29,11 @@ export default {
     background: rgb(50,50,50);
 }
 .police {
+    /*font-family: 'Oswald', sans-serif;*/
+    /*
+    font-family: 'Lato', sans-serif;
+        */
     font-family: 'Garamond', serif;
+
 }
 </style>

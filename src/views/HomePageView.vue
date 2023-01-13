@@ -216,7 +216,7 @@ export default {
   color: #373436;
   font-size: 28px;
   padding-top: 7.5vw;
-  padding-right: 15vw;
+  padding-right: 5vw;
   float: right;
 }
 
@@ -388,9 +388,6 @@ export default {
 .fondBlanc {
   background-color: #373436;
   height: 100%;
-}
-.police {
-    font-family: 'Garamond', serif;
 }
 
 </style>

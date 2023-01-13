@@ -20,6 +20,7 @@
             absolute
             temporary
             color="rgb(50,50,50)"
+            width="300"
         >
             <v-list nav dense>
                 <v-list-item-group
@@ -184,7 +185,6 @@ export default {
 
 <style scoped>
 .police {
-    font-family: 'Garamond', serif;
     font-weight: bold;
 }
 </style>
