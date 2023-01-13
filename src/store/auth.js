@@ -92,6 +92,7 @@ export default {
                 return -1;
             }
             await dispatch('attempt', this.token);
+            await dispatch('getTicket', state.user.id_user);
         }
     },
 }

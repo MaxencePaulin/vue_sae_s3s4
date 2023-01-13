@@ -69,7 +69,7 @@
                 <v-col cols="12">
                     <v-card style="margin-top: 10px;margin-left:10vh;margin-right:10vh;margin-bottom:5vh;background-color: rgb(255,222,89);">
                         <v-card-title>
-                            <h1>Historique de commande(s) de ticket(s) : {{ userTicket.length }}</h1>
+                            <h1>Historique de commande(s) de ticket(s) : {{ userTicket?.length }}</h1>
                         </v-card-title>
                         <v-card v-for="(e, i) in ticket" :key="i" color="grey" style="margin:1vh;">
                             <v-card-title>
@@ -177,7 +177,7 @@ export default {
                         mobile: this.mobile === '' ? null : this.mobile,
                         genre: this.genre === '' ? null : this.genre,
                     }).then(() => {
-                        this.cancel();
+                        this.$router.go('/account' );
                     });
                 }
             }
