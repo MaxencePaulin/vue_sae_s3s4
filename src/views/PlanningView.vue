@@ -98,7 +98,7 @@ export default {
     }
   }
 }
-</script> //E
+</script>
 
 <style>
 .button1 {
