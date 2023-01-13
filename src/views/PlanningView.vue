@@ -76,24 +76,24 @@ export default {
       showTable3: false,
       showTable4: false,
       table1Data: [
-        { name: 'Artiste 1', time: '20h00' },
-        { name: 'Artiste 2', time: '21h00' },
-        { name: 'Artiste 3', time: '22h00' }
+        {name: 'Artiste 1', time: '20h00'},
+        {name: 'Artiste 2', time: '21h00'},
+        {name: 'Artiste 3', time: '22h00'}
       ],
       table2Data: [
-        { name: 'Artiste 4', time: '19h00' },
-        { name: 'Artiste 5', time: '20h30' },
-        { name: 'Artiste 6', time: '22h15' }
+        {name: 'Artiste 4', time: '19h00'},
+        {name: 'Artiste 5', time: '20h30'},
+        {name: 'Artiste 6', time: '22h15'}
       ],
       table3Data: [
-        { name: 'Artiste 7', time: '19h00' },
-        { name: 'Artiste 8', time: '20h30' },
-        { name: 'Artiste 9', time: '22h15' }
+        {name: 'Artiste 7', time: '19h00'},
+        {name: 'Artiste 8', time: '20h30'},
+        {name: 'Artiste 9', time: '22h15'}
       ],
       table4Data: [
-        { name: 'Artiste 10', time: '19h00' },
-        { name: 'Artiste 11', time: '20h30' },
-        { name: 'Artiste 12', time: '22h15' }
+        {name: 'Artiste 10', time: '19h00'},
+        {name: 'Artiste 11', time: '20h30'},
+        {name: 'Artiste 12', time: '22h15'}
       ]
     }
   }
