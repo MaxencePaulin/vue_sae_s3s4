@@ -126,7 +126,7 @@ th, td{
   border: 1px solid black;
 }
 
-.center {
+.center{
   display: flex;
   justify-content: center;
   align-items: center;
