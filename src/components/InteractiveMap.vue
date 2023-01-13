@@ -205,7 +205,6 @@ export default {
             if(id != -1){
                 if(id.includes('Presta')){
                     this.currentInfo = this.allPrestataires[id.replace('Presta', '') - 1];
-                    console.log(this.currentInfo)
                     this.status = 1
                 }else{
                     this.currentInfo = this.allScenes[id.replace('Scene', '') - 1];
