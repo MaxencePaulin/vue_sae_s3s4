@@ -122,6 +122,7 @@
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
+                            <span>Les champs marquées par des "*" sont obligatoires</span>
                             <v-spacer></v-spacer>
                             <v-btn color="warning" @click="register">S'inscrire</v-btn>
                         </v-card-actions>
