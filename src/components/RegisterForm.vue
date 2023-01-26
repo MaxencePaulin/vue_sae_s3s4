@@ -122,10 +122,6 @@
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
-                            <span>Connexion avec Google</span>
-                            <v-btn color="accent" elevation="4" fab small style="margin-left: 1rem;"><img src="../assets/google.svg" alt="#"></v-btn>
-                        </v-card-actions>
-                        <v-card-actions>
                             <span>Les champs marquées par des "*" sont obligatoires</span>
                             <v-spacer></v-spacer>
                             <v-btn color="warning" @click="register">S'inscrire</v-btn>
