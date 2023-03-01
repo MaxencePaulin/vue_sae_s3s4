@@ -18,11 +18,22 @@
                                 :rules="passwordRules" :type="showPassword ? 'text' : 'password'" label="Mot de passe"
                                 required @click:append="showPassword = !showPassword"
                                 @keyup.enter="login"></v-text-field>
-                            <v-card-actions>
-                                <span>Connexion avec Google</span>
-                                <v-btn color="accent" elevation="4" fab small style="margin-left: 1rem;"><img
-                                        src="../assets/google.svg" alt="#"></v-btn>
-                            </v-card-actions>
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <button id="google_btn">
+                                        <a class="btn btn-lg btn-google btn-block btn-outline" style="text-decoration: none; color : black" href="#">Signup Using Google</a>
+                                    </button>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button id="discord_btn">
+                                            <a class="btn btn-lg btn-discord btn-block btn-outline" style="text-decoration: none; color: black" href="#">Signup Using Discord</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
@@ -86,4 +97,78 @@ export default {
 
 <style scoped>
 
+</style>
+
+<style>
+/* BOUTON GOOGLE */
+#google_btn {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #de4040;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+}
+
+#google_btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #e8e8e8;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+}
+
+#google_btn:hover::before {
+    width: 100%;
+}
+
+/* BOUTON DISCORD */
+#discord_btn {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #7289DA;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+}
+
+#discord_btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #e8e8e8;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+}
+
+#discord_btn:hover::before {
+    width: 100%
+}
 </style>
