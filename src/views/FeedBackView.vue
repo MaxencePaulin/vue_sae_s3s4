@@ -27,6 +27,30 @@
                 <v-btn  color="black" text @click="goToComment">Ajouter un avis</v-btn>
             </v-card-actions>
         </v-card>
+      <v-container id="container" fluid style="margin: 5vh;">
+        <v-container id="namesWrapper">
+          <h2>ChatIO</h2>
+          <p>Create Username: </p>
+          <div id="error"> </div>
+          <form id="usernameForm">
+            <input type="text" size="35" id="username">
+            <input type="submit" value="Submit">
+          </form>
+        </v-container>
+        <v-container id="mainWrapper">
+          <h2>Chat avec Socket.IO </h2>
+          <v-container id="chatWrapper">
+            <v-container id="chatWindow"> </v-container>
+            <form id="messageForm">
+              <input type="text" size="35" id="message" placeholder="Say Something .">
+              <input type="submit" value="Submit">
+            </form>
+          </v-container>
+          <v-container id="userWrapper">
+            <v-container id="users"> </v-container>
+          </v-container>
+        </v-container>
+      </v-container>
     </v-container>
 
 </template>
@@ -76,8 +100,116 @@ export default {
         },
     }
 }
+
+import $ from "jquery";
+import io from "socket.io-client";
+
+$(function(){
+  var socket = io.connect();
+  var $messageForm = $('#messageForm');
+  var $message = $('#message');
+  var $chat = $('#chatWindow');
+  var $usernameForm = $('#usernameForm');
+  var $users = $('#users');
+  var $username = $('#username');
+  var $error = $('#error');
+  $usernameForm.submit(function(e){
+    console.log('usernameForm Submit');
+    e.preventDefault();
+    socket.emit('new user', $username.val(), function(data){
+      if(data){
+        $('#namesWrapper').hide();
+        $('#mainWrapper').show();
+        for (var msg in data.messages) {
+          $chat.append('Time:'+msg.time+" <strong>"+msg.user+' </strong>: '+msg.msg+'<br>');
+        }
+      } else{
+        $error.html('Username is taken');
+      }
+    });
+  });
+
+  socket.on('usernames', function(data){
+    console.log('usernames update function');
+    var html = '';
+    for(let i = 0; i < data.length; i++){
+      html += data[i] + '<br>';
+    }
+    $users.html(html);
+  });
+
+  socket.on('messages', function(data){
+    console.log('messages update function');
+    var html = '';
+    for(let i = 0; i < data.length; i++){
+      html += 'Time:'+data[i].time+" <strong>"+data[i].user+' </strong>: '+data[i].msg+'<br>';
+    }
+
+    console.log(html);
+    $chat.html(html);
+  });
+
+  $messageForm.submit(function(e){
+    console.log('$messageForm Submit');
+    e.preventDefault();
+    socket.emit('send message', $message.val());
+    $message.val('');
+  });
+  /*
+  socket.on('new message', function(data){
+      console.log('new messages function');
+      $chat.append('Time:'+data.time+" <strong>"+data.user+' </strong>: '+data.msg+'<br>');
+  });
+  */
+});
 </script>
 
 <style scoped>
+#container{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#chatWindow{
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  padding: 20px;
+  background: rgb(255, 222, 89);
+}
+#mainWrapper{
+  display: none;
+}
+#chatWrapper{
+  float:left;
+  border:1px rgb(0, 0, 0) solid;
+  border-radius: 10px;
+  background:rgb(255, 222, 89);
+  padding:10px;
+}
+#userWrapper{
+  float:left;
+  border:1px rgb(0, 0, 0) solid;
+  border-radius: 10px;
+  background: rgb(255, 222, 89);
+  padding:10px;
+  margin-left:20px;
 
+  max-height:200px;
+}
+#namesWrapper{
+  float:left;
+  border:1px rgb(0, 0, 0) solid;
+  border-radius: 10px;
+  background: rgb(255, 222, 89);
+  padding:10px;
+  margin-left:20px;
+}
+input{
+  height: 30px;
+  border: solid 2px rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
 </style>
