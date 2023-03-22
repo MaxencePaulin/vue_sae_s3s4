@@ -27,13 +27,13 @@
                 <v-btn  color="black" text @click="goToComment">Ajouter un avis</v-btn>
             </v-card-actions>
         </v-card>
-      <v-container id="container" fluid style="margin: 5vh;">
+      <v-container id="container" fluid>
         <v-container id="namesWrapper">
           <h2>ChatIO</h2>
           <p>Create Username: </p>
           <div id="error"> </div>
           <form id="usernameForm">
-            <input type="text" size="35" id="username">
+            <input type="text" size="35" id="username" style="margin-right: 10px0">
             <input type="submit" value="Submit">
           </form>
         </v-container>
@@ -105,7 +105,7 @@ import $ from "jquery";
 import io from "socket.io-client";
 
 $(function(){
-  var socket = io.connect();
+  var socket = io.connect('http://localhost:3000');
   var $messageForm = $('#messageForm');
   var $message = $('#message');
   var $chat = $('#chatWindow');
@@ -173,19 +173,23 @@ $(function(){
 }
 #chatWindow{
   border: 2px solid rgb(0, 0, 0);
-  border-radius: 20px;
+  border-radius: 5px;
+  min-height: 400px;
   padding: 20px;
   background: rgb(255, 222, 89);
 }
 #mainWrapper{
   display: none;
+  float:left;
+  border:1px rgb(0, 0, 0) solid;
+  border-radius: 10px;
+  background: rgb(255, 222, 89);
 }
 #chatWrapper{
   float:left;
   border:1px rgb(0, 0, 0) solid;
   border-radius: 10px;
   background:rgb(255, 222, 89);
-  padding:10px;
 }
 #userWrapper{
   float:left;
@@ -193,23 +197,22 @@ $(function(){
   border-radius: 10px;
   background: rgb(255, 222, 89);
   padding:10px;
-  margin-left:20px;
-
-  max-height:200px;
+  margin-top: 5px;
 }
 #namesWrapper{
   float:left;
   border:1px rgb(0, 0, 0) solid;
   border-radius: 10px;
   background: rgb(255, 222, 89);
-  padding:10px;
-  margin-left:20px;
+
+}
+#messageForm{
+  margin-top: 10px;
+
 }
 input{
   height: 30px;
   border: solid 2px rgb(0, 0, 0);
   border-radius: 10px;
-  padding: 10px;
-  margin-top: 10px;
 }
 </style>
