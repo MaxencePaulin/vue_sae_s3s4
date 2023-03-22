@@ -29,20 +29,20 @@
         </v-card>
       <v-container id="container" fluid>
         <v-container id="namesWrapper">
-          <h2>ChatIO</h2>
-          <p>Create Username: </p>
+          <h2>Chat</h2>
+          <p>Create un pseudo: </p>
           <div id="error"> </div>
           <form id="usernameForm">
-            <input type="text" size="35" id="username" style="margin-right: 10px0">
-            <input type="submit" value="Submit">
+            <input type="text" size="35" id="username" style="margin-right: 10px">
+            <input type="submit" value="Envoyer">
           </form>
         </v-container>
         <v-container id="mainWrapper">
-          <h2>Chat avec Socket.IO </h2>
+          <h2>Chat</h2>
           <v-container id="chatWrapper">
             <v-container id="chatWindow"> </v-container>
             <form id="messageForm">
-              <input type="text" size="35" id="message" placeholder="Say Something .">
+              <input type="text" size="35" id="message" placeholder="Envoyer un message.">
               <input type="submit" value="Submit">
             </form>
           </v-container>
@@ -142,7 +142,7 @@ $(function(){
     console.log('messages update function');
     var html = '';
     for(let i = 0; i < data.length; i++){
-      html += 'Time:'+data[i].time+" <strong>"+data[i].user+' </strong>: '+data[i].msg+'<br>';
+      html += data[i].time+"; <strong>"+data[i].user+' </strong>: '+data[i].msg+'<br>';
     }
 
     console.log(html);
@@ -155,12 +155,6 @@ $(function(){
     socket.emit('send message', $message.val());
     $message.val('');
   });
-  /*
-  socket.on('new message', function(data){
-      console.log('new messages function');
-      $chat.append('Time:'+data.time+" <strong>"+data.user+' </strong>: '+data.msg+'<br>');
-  });
-  */
 });
 </script>
 
