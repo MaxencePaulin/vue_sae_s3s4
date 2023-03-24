@@ -7,17 +7,30 @@
                         <h1 class="display-2 mx-auto">Ajouter un Prestataire</h1>
                     </v-card-title>
                     <v-card-text>
-                        <select name="type_presta">
-                            <option v-for="type , id in alltype" :key="id"  >{{ type }}</option>
-                        </select>
-                        <v-form ref="form" v-model="valide" lazy-validation>
-                            <v-text-field v-model="service" :rules="service" label="Service" required
-                                @keyup.enter="valider"></v-text-field>
-                            <v-text-field v-model="libelle_presta" :rules="service" label="Nom du Prestataire" required
-                            @keyup.enter="valider"></v-text-field>
-                          
+                        <v-select
+                            v-model="selectedId"
+                            label="Type de prestataire"
+                            :items="allTypesPrestataire"
+                            item-text="libelle_typeprestataire"
+                            item-value="id_typeprestataire"
+                            @change="log">
+                        </v-select>
+                        <v-form ref="form" v-model="valid" lazy-validation>
+                            <v-text-field
+                                v-model="service"
+                                :rules="serviceRules"
+                                label="Service"
+                                required
+                                @keyup.enter="valider">
+                            </v-text-field>
+                            <v-text-field
+                                v-model="libelle_presta"
+                                :rules="libelle_prestaRules"
+                                label="Nom du Prestataire"
+                                required
+                                @keyup.enter="valider">
+                            </v-text-field>
                         </v-form>
-                        <p v-bind="id">{{ id }}</p>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
@@ -30,78 +43,43 @@
   </template>
   
   <script>
-//   import { mapGetters, mapActions } from 'vuex';
-import Vue from 'vue'
+import { mapState, mapActions } from 'vuex';
   export default {
     name: "AddPrestataireView",
     data: () => ({
       valid: true,
       service: '',
       libelle_presta : '' ,
-      id : 0 ,
-      alltype : Vue.axios.get("http://localhost:3000/typeprestataire").then((response) => {
-                if (response.data.success === 1) {
-                    return response.data
-                } else {
-                    return []
-                }
-            }).catch((e) => {
-                console.log(e);
-                alert("Une erreur est survenu");
-            }),
+        selectedId: -1,
       serviceRules: [
         v => !!v || 'Service requis'
       ],
+        libelle_prestaRules: [
+            v => !!v || 'Libelle du prestataire requis'
+        ],
     }),
-    methods: {
+      computed: {
+        ...mapState('typeprestataire', ['allTypesPrestataire']), // a ne surtout pas modifier les types directement -> state
+      },
+      methods: {
+        ...mapActions('prestataire', ['addPrestataire']), // TODO dans le store prestataire
         valider() {
-            if (this.service === '' ||
-                this.libelle_presta === '') {
-                alert("Le service et le libelle du prestataire doit etre renseigner");
-                return;
-            }
-            Vue.axios.post("http://localhost:3000/users/register", {
-                login: this.identifiant,
-                password: this.password,
-                email: this.email,
-                firstname: this.firstname,
-                lastname: this.lastname,
-                dob: this.dob,
-                address: this.address,
-                mobile: this.mobile,
-                genre: this.genre
-            }).then((response) => {
-                if (response.data.success === 1) {
-                    this.$router.push({name: "login"})
-                } else {
-                    alert("Identifiant ou email déjà utilisé");
+            if (this.$refs.form.validate()) {
+                if (this.selectedId === -1) {
+                    alert('Veuillez choisir un type de prestataire');
+                    return
                 }
-            }).catch((e) => {
-                console.log(e);
-                alert("Inscription impossible");
-            });
+                this.addPrestataire({
+                    id_typeprestataire: this.selectedId,
+                    libelle_typeprestataire: this.libelle_presta,
+                }).then(() => {
+                    this.$router.push({ name: 'prestataire' });
+                }).catch(() => {
+                    this.$router.push({ name: '404' });
+                });
+            }
         },
     }
-
-    // computed: {
-    //   ...mapGetters('auth', ['user']),
-    //   ...mapGetters('artist', ['artist']),
-    //   ...mapGetters('prestataire', ['prestataire']),
-    // },
-    // methods: {
-    //   ...mapActions('prestataire', ['addServicePrestataire','allService']),
-    //   async addService() {
-    //     if (this.$refs.form.validate()) {
-    //       await this.addServicePrestataire({
-    //         id_prestataire: this.prestataire.id_prestataire,
-    //         id_user: this.user.id_user,
-    //         libelle_service: this.service,
-    //       });
-    //       await this.allService(this.prestataire.id_prestataire);
-    //       this.$router.push({ name: 'prestataireId', params: { id: this.prestataire.id_prestataire } });
-    //     }
-    //   }
-    // },
   }
   </script>
   

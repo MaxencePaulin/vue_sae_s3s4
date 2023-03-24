@@ -7,6 +7,7 @@ import concert from './concert'
 import ticket from './ticket'
 import prestataire from './prestataire'
 import interactive from './interactive'
+import typeprestataire from "@/store/typeprestataire";
 
 Vue.use(Vuex)
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
         concert,
         ticket,
         prestataire,
-        interactive
+        interactive,
+        typeprestataire,
     }
 })

@@ -296,18 +296,24 @@ const routes = [
         }
     },
     {
-        path: "/prestataire",
+        path: "/addPrestataire",
         name: "addPrestataire",
         component: AddPrestataireView,
-        beforeEnter: (to, from, next) => {
+        beforeEnter: async (to, from, next) => {
             console.log("toot")
-            if (store.getters['auth/authenticated']) {
-                return next({ name: 'home' })
+            if (!store.getters['auth/authenticated']) {
+                console.log("auth")
+                return next({ name: 'login' })
             }
             if (store.getters["auth/user"].id_role !== 3) {
+                console.log("user role")
                 return next({
                     name: 'unauthorized'
                 })
+            }
+            let response = await store.dispatch('typeprestataire/getAllTypesPrestataires');
+            if (response === -1) {
+                return next({name: '404'});
             }
             next()
         }
