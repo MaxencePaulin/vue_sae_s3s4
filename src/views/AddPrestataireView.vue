@@ -8,7 +8,7 @@
                     </v-card-title>
                     <v-card-text>
                         <select name="type_presta">
-                            <option v-for="type , id in alltype" id=:id >{{ type }}</option>
+                            <option v-for="type , id in alltype" :key="id"  >{{ type }}</option>
                         </select>
                         <v-form ref="form" v-model="valide" lazy-validation>
                             <v-text-field v-model="service" :rules="service" label="Service" required
@@ -17,6 +17,7 @@
                             @keyup.enter="valider"></v-text-field>
                           
                         </v-form>
+                        <p v-bind="id">{{ id }}</p>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
@@ -32,7 +33,7 @@
 //   import { mapGetters, mapActions } from 'vuex';
 import Vue from 'vue'
   export default {
-    name: "AddServiceView",
+    name: "AddPrestataireView",
     data: () => ({
       valid: true,
       service: '',

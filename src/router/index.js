@@ -20,7 +20,7 @@ import AddCommentFestView from "@/views/AddCommentFestView.vue";
 import TicketView from "@/views/TicketView.vue";
 import BoughtTicketView from "@/views/BoughtTicketView.vue";
 import PlanningView from '../views/PlanningView.vue';
-
+import AddPrestataireView from '../views/AddPrestataireView.vue' ;
 Vue.use(VueRouter)
 
 const routes = [
@@ -293,6 +293,23 @@ const routes = [
                 return next({ name: '404' });
             }
             next();
+        }
+    },
+    {
+        path: "/prestataire",
+        name: "addPrestataire",
+        component: AddPrestataireView,
+        beforeEnter: (to, from, next) => {
+            console.log("toot")
+            if (store.getters['auth/authenticated']) {
+                return next({ name: 'home' })
+            }
+            if (store.getters["auth/user"].id_role !== 3) {
+                return next({
+                    name: 'unauthorized'
+                })
+            }
+            next()
         }
     },
     {
