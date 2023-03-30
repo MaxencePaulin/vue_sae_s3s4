@@ -315,7 +315,7 @@ const routes = [
             if (response === -1) {
                 return next({name: '404'});
             }
-            response = await store.dispatch('prestataire/getServicePrestataire');
+            response = await store.dispatch('prestataire/getService');
             if (response === -1) {
                 return next({name: '404'});
             }
