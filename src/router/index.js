@@ -315,6 +315,10 @@ const routes = [
             if (response === -1) {
                 return next({name: '404'});
             }
+            response = await store.dispatch('prestataire/getServicePrestataire');
+            if (response === -1) {
+                return next({name: '404'});
+            }
             next()
         }
     },
