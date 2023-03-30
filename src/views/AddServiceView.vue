@@ -47,7 +47,7 @@ export default {
     ...mapGetters('prestataire', ['prestataire']),
   },
   methods: {
-    ...mapActions('prestataire', ['addServicePrestataire','allService']),
+    ...mapActions('prestataire', ['addServicePrestataire']),
     async addService() {
       if (this.$refs.form.validate()) {
         await this.addServicePrestataire({
@@ -55,7 +55,6 @@ export default {
           id_user: this.user.id_user,
           libelle_service: this.service,
         });
-        await this.allService(this.prestataire.id_prestataire);
         this.$router.push({ name: 'prestataireId', params: { id: this.prestataire.id_prestataire } });
       }
     }

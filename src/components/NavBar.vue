@@ -115,14 +115,6 @@
                                 </v-list-item-title>
                             </v-list-item>
                         </span>
-                        <v-list-item @click="$router.push('/addPrestataire').catch(() => {})">
-                                <v-list-item-icon>
-                                    <v-icon color="amber">mdi-account-cog</v-icon>
-                                </v-list-item-icon>
-                                <v-list-item-title style="color: rgb(255, 222, 89)">
-                                    Ajouter un prestataire
-                                </v-list-item-title>
-                            </v-list-item>
                     </span>
                 </v-list-item-group>
             </v-list>

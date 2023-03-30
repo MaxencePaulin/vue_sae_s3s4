@@ -300,22 +300,15 @@ const routes = [
         name: "addPrestataire",
         component: AddPrestataireView,
         beforeEnter: async (to, from, next) => {
-            console.log("toot")
             if (!store.getters['auth/authenticated']) {
-                console.log("auth")
                 return next({ name: 'login' })
             }
             if (store.getters["auth/user"].id_role !== 3) {
-                console.log("user role")
                 return next({
                     name: 'unauthorized'
                 })
             }
             let response = await store.dispatch('typeprestataire/getAllTypesPrestataires');
-            if (response === -1) {
-                return next({name: '404'});
-            }
-            response = await store.dispatch('prestataire/getService');
             if (response === -1) {
                 return next({name: '404'});
             }

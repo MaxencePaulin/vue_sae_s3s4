@@ -7,11 +7,8 @@
                         <h1 class="display-2 mx-auto">Ajouter un Prestataire</h1>
                     </v-card-title>
                     <v-card-text>
-                        <v-select v-model="selectedId" label="Type de prestataire" :items="allTypesPrestataire"
+                        <v-select v-model="selectedTypesId" label="Type de prestataire" :items="allTypesPrestataire"
                             item-text="libelle_typeprestataire" item-value="id_typeprestataire" @change="log">
-                        </v-select>
-                        <v-select v-model="selectedId" label="Type de service" :items="allServices"
-                            item-text="libelle_service" item-value="id_service" @change="log">
                         </v-select>
                         <v-form ref="form" v-model="valid" lazy-validation>
                             <v-text-field v-model="libelle_presta" :rules="libelle_prestaRules" label="Nom du Prestataire"
@@ -37,7 +34,7 @@ export default {
         valid: true,
         service: '',
         libelle_presta: '',
-        selectedId: -1,
+        selectedTypesId: -1,
         serviceRules: [
             v => !!v || 'Service requis'
         ],
@@ -47,19 +44,18 @@ export default {
     }),
     computed: {
         ...mapState('typeprestataire', ['allTypesPrestataire']), // a ne surtout pas modifier les types directement -> state
-        ...mapState('prestataire', ['allServices']),
     },
     methods: {
         ...mapActions('prestataire', ['addPrestataire']), // TODO dans le store prestataire
         valider() {
             if (this.$refs.form.validate()) {
-                if (this.selectedId === -1) {
-                    alert('Veuillez choisir un type de prestataire');
+                if (this.selectedTypesId === -1) {
+                    alert('Veuillez choisir un type de prestataire et un type de service');
                     return
                 }
                 this.addPrestataire({
-                    id_typeprestataire: this.selectedId,
-                    libelle_typeprestataire: this.libelle_presta,
+                    libelle_prestataire: this.libelle_presta,
+                    id_typeprestataire: this.selectedTypesId
                 }).then(() => {
                     this.$router.push({ name: 'prestataire' });
                 }).catch(() => {
@@ -67,6 +63,9 @@ export default {
                 });
             }
         },
+        log() {
+            console.log(this.selectedTypesId)
+        }
     }
 }
 </script>
