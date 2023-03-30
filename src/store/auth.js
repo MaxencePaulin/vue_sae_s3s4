@@ -41,6 +41,11 @@ export default {
             let response = await Vue.axios.post('http://localhost:3000/users/login', credentials)
             dispatch('attempt', response.data.data.token)
         },
+        async googleSignIn ({ dispatch }) {
+            console.log("Google Sign in 2")
+            let response = await Vue.axios.post('http://localhost:3000/gOauth/auth/google')
+            dispatch('attempt', response.data.data.token)
+        },
 
         async attempt ({ commit, state }, token) {
             if (token) {
