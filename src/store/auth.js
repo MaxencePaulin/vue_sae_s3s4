@@ -43,7 +43,7 @@ export default {
         },
         async googleSignIn ({ dispatch }) {
             console.log("Google Sign in 2")
-            let response = await Vue.axios.post('http://localhost:3000/gOauth/auth/google')
+            let response = await Vue.axios.get('http://localhost:3000/gOauth/auth/google')
             dispatch('attempt', response.data.data.token)
         },
 
