@@ -30,7 +30,7 @@
       <v-container id="container" fluid>
         <v-container id="namesWrapper">
           <h2>Chat</h2>
-          <p>Create un pseudo: </p>
+          <p>Créer un pseudo: </p>
           <div id="error"> </div>
           <form id="usernameForm">
             <input type="text" size="35" id="username" style="margin-right: 10px">
