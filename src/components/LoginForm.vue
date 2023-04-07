@@ -15,7 +15,7 @@
                     </v-card-subtitle>
                     <v-card-text>
                         <v-form ref="form" v-model="valid" lazy-validation>
-                            // CSRF token
+                            <!-- CSRF token -->
                             <input type="hidden" name="_csrf" :value="csrfToken">
                             <v-text-field v-model="identifiant" :rules="identifiantRules" label="Identifiant" required
                                 @keyup.enter="login"></v-text-field>

@@ -8,7 +8,7 @@
                     </v-card-title>
                     <v-card-text>
                         <v-form ref="form" v-model="valid" lazy-validation>
-                            // CSRF token
+                            <!-- CSRF token -->
                             <input type="hidden" name="_csrf" :value="csrfToken">
                             <v-row>
                                 <v-col cols="12" md="4">
@@ -72,6 +72,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import helmet from 'helmet';
+// import Joi from 'joi';
 export default {
     name: "RegisterForm",
     data: () => ({
@@ -135,6 +136,7 @@ export default {
     mounted () {
         this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     },
+    // Avant Joi
     methods: {
         register() {
             // Créer un jeton CSRF
@@ -142,7 +144,7 @@ export default {
 
             // Ajouter le jeton CSRF à l'en-tête de la requête
             axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
-
+            
             if (this.login === '' ||
                 this.password === '' ||
                 this.password !== this.confirmPassword) {
