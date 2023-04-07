@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button id="discord_btn">
-                                            <a class="btn btn-lg btn-discord btn-block btn-outline" style="text-decoration: none; color: black" href="#">Signup Using Discord</a>
+                                            <a class="btn btn-lg btn-discord btn-block btn-outline" style="text-decoration: none; color: black" href='https://discord.com/api/oauth2/authorize?client_id=1070627686302625852&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=code&scope=identify' >Signup Using Discord</a>
                                         </button>
                                     </div>
                                 </div>
