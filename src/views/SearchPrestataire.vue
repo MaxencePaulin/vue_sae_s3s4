@@ -9,7 +9,7 @@
                   v-model="search"
                   append-icon="mdi-magnify"
                   color="rgb(255,222,89)"
-                  label="Rechercher un Prestataire"
+                  label="Rechercher un prestataire par son nom"
                   single-line
                   hide-details
                   @click:append="updatePage(0)"
@@ -70,7 +70,7 @@ export default {
   data: () => ({
     search: "",
     currentPage: 0,
-    perPage: 1,
+    perPage: 4,
     colorcss: {
       color: "rgb(255,222,89)"
     }

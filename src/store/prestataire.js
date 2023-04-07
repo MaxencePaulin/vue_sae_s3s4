@@ -31,9 +31,6 @@ export default {
         },
         SET_SERVICE_PRESTATAIRE (state, allServices) {
             state.allService = allServices
-        },
-        SET_SERVICE (state, allServices) {
-            state.allService = allServices
         }
     },
     actions: {
@@ -96,15 +93,6 @@ export default {
             console.log(response.data)
             await commit('SET_SERVICE_PRESTATAIRE', response.data)
         },
-        async getService ({ commit }) {
-            let response = await Vue.axios.get('http://localhost:3000/service/')
-            if (response.status === 500) {
-                console.log("axios error service/");
-                console.log(response.data.message);
-            }
-            console.log(response.data)
-            await commit('SET_SERVICE', response.data)
-        },
         async addServicePrestataire ({ commit }, {id_prestataire, libelle_service}) {
             let response = await Vue.axios.post('http://localhost:3000/propose/withnewservice/', {
                 id_prestataire: id_prestataire,
@@ -116,5 +104,12 @@ export default {
             console.log(response.data)
             await commit('SET_SERVICE_PRESTATAIRE', response.data)
         },
+        async addPrestataire ({ dispatch },  data) {
+            let response = await Vue.axios.post('http://localhost:3000/prestataire/', data)
+            if (response.status === 500) {
+                console.log("axios error prestataire add/");
+            }
+            await dispatch('getAllPrestataires')
+        }
     },
 }
